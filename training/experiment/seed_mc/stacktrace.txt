@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "../../tools/train.py", line 85, in <module>
+    sw.train_model()
+  File "../../tools/train.py", line 66, in train_model
+    self.solver.solve()
+  File "/media/ssd1/austin/DSRG/training/tools/../../pylayers/pylayers/layer.py", line 57, in forward
+    im, label = self.batch_loader.load_next_image()
+  File "/media/ssd1/austin/DSRG/training/tools/../../pylayers/pylayers/layer.py", line 116, in load_next_image
+    return self.transformer.preprocess(image, label)
+  File "/media/ssd1/austin/DSRG/training/tools/../../pylayers/pylayers/layer.py", line 176, in preprocess
+    image -= self.mean
+ValueError: non-broadcastable output operand with shape () doesn't match the broadcast shape (3,)
+

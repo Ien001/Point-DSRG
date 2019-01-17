@@ -1,0 +1,29 @@
+(dsrg) austin@vader:/media/ssd1/austin/DSRG/training/experiment/seed_mc$ sudo apt-get install python-tk
+[sudo] password for austin: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Suggested packages:
+  tix python-tk-dbg
+The following packages will be REMOVED:
+  blt python3-tk
+The following NEW packages will be installed:
+  python-tk
+0 upgraded, 1 newly installed, 2 to remove and 481 not upgraded.
+Need to get 23.6 kB of archives.
+After this operation, 175 kB disk space will be freed.
+Do you want to continue? [Y/n] 
+Get:1 http://us.archive.ubuntu.com/ubuntu/ trusty/main python-tk amd64 2.7.5-1ubuntu1 [23.6 kB]
+Fetched 23.6 kB in 0s (74.5 kB/s)    
+(Reading database ... 269906 files and directories currently installed.)
+Removing python3-tk:amd64 (3.6.3-0ubuntu1~14.04.york0) ...
+Removing blt (2.5.3+dfsg-3~14.04.york1) ...
+Selecting previously unselected package python-tk.
+(Reading database ... 269895 files and directories currently installed.)
+Preparing to unpack .../python-tk_2.7.5-1ubuntu1_amd64.deb ...
+Unpacking python-tk (2.7.5-1ubuntu1) ...
+Setting up python-tk (2.7.5-1ubuntu1) ...
+W: Ignoring Provides line with DepCompareOp for package gdb-minimal
+W: Ignoring Provides line with DepCompareOp for package gdb-minimal
+W: You may want to run apt-get update to correct these problems
+(dsrg) austin@vader:/media/ssd1/austin/DSRG/training/experiment/seed_mc$ 
