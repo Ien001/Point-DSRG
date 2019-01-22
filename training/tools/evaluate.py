@@ -6,6 +6,9 @@ import cv2
 from multiprocessing import Pool 
 import copy_reg
 import types
+
+import pdb
+
 def _pickle_method(m):
     if m.im_self is None:
         return getattr, (m.im_class, m.im_func.func_name)
@@ -126,7 +129,11 @@ def show_all(gt, pred):
     ax2.set_title('pred')
     ax2.imshow(pred, cmap=cmap, norm=norm)
 
-    plt.show()
+    #plt.show()
+    plt.draw()
+    plt.pause(1)
+    raw_input('key')
+    plt.close()
 
 
 if __name__ == '__main__':
@@ -137,13 +144,16 @@ if __name__ == '__main__':
     test_ids = [i.strip() for i in open(args.test_ids) if not i.strip() == '']
     for index, img_id in enumerate(test_ids):
         if index % 100 == 0:
-            print('%d processd'%(index))
+            print('{} processd of {}'.format(index, len(test_ids)))
         pred_img_path = os.path.join(args.pred_dir, img_id+'.png')
         gt_img_path = os.path.join(args.gt_dir, img_id+'.png')
         pred = cv2.imread(pred_img_path, cv2.IMREAD_GRAYSCALE)
         gt = cv2.imread(gt_img_path, cv2.IMREAD_GRAYSCALE)
         # show_all(gt, pred)
-        data_list.append([gt.flatten(), pred.flatten()])
+        try:
+            data_list.append([gt.flatten(), pred.flatten()])
+        except:
+            pdb.set_trace()
 
     ConfM = ConfusionMatrix(args.class_num)
     f = ConfM.generateM

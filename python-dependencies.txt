@@ -6,7 +6,7 @@ matplotlib==1.5.1
 networkx==1.11
 numpy==1.11.1
 Pillow==3.3.0
-protobuf==3.0.0
+protobuf==3.6.1
 pyparsing==2.1.5
 pypng==0.0.18
 python-dateutil==2.5.3

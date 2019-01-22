@@ -19,7 +19,7 @@ this_dir = osp.dirname(__file__)
 
 # Add caffe to PYTHONPATH
 # caffe_path = osp.join('/workspace', 'hzl', 'deeplab-v2', 'python')
-caffe_path = osp.join('/media', 'ssd1', 'austin', 'DSRG', 'deeplab-public-ver2', 'python')
+caffe_path = osp.join('/media', 'ssd1', 'austin', 'Point-DSRG', 'deeplab-public-ver2', 'python')
 #caffe_path = /workspace/hzl/deeplab-v2/python/
 print(caffe_path)
 add_path(caffe_path)

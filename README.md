@@ -33,6 +33,7 @@ If you find DSRG useful in your research, please consider citing:
 * **caffe (deeplabv2 version)**: deeplabv2 caffe installation instructions are available at `https://bitbucket.org/aquariusjay/deeplab-public-ver2`. Note, you need to compile **caffe** with python wrapper and support for python layers. Then add the caffe python path into [training/tools/findcaffe.py](https://github.com/speedinghzl/DSRG/blob/master/training/tools/findcaffe.py#L21).
 
 * Fully connected CRF wrapper (requires the **Eigen3** package).
+* Installing **Eigen3** is as simple as downloading their zip file, and linking unzipped_directory/Eigen to CRF/include
 ```bash
       $ pip install CRF/
 ```
