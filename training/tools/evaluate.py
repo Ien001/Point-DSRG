@@ -153,8 +153,12 @@ if __name__ == '__main__':
         try:
             data_list.append([gt.flatten(), pred.flatten()])
         except:
-            pdb.set_trace()
+            print(img_id, 'failed data_list')
+            # pdb.set_trace()
+        # pdb.set_trace()
 
+    print("made it")
+    # pdb.set_trace()
     ConfM = ConfusionMatrix(args.class_num)
     f = ConfM.generateM
     pool = Pool() 
