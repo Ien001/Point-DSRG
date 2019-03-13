@@ -1,0 +1,2917 @@
+(pdsrg) austin@vader:/media/ssd1/austin/Point-DSRG/training/experiment/seed_mc$ python ../../tools/test-ms.py --model models/model-s_iter_8000.caffemodel --images list/val_id.txt --dir ${PASCAL_DIR} --output ${PASCAL_DIR}/DSRGValOutput --gpu ${GPU} --smooth true
+/media/ssd1/austin/Point-DSRG/deeplab-public-ver2/python
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0312 16:34:32.592305 10704 net.cpp:49] Initializing net from parameters:
+name: "DSRG"
+input: "images"
+input_dim: 1
+input_dim: 3
+input_dim: 321
+input_dim: 321
+state {
+  phase: TEST
+}
+layer {
+  name: "conv1_1"
+  type: "Convolution"
+  bottom: "images"
+  top: "conv1_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu1_1"
+  type: "ReLU"
+  bottom: "conv1_1"
+  top: "conv1_1"
+}
+layer {
+  name: "conv1_2"
+  type: "Convolution"
+  bottom: "conv1_1"
+  top: "conv1_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu1_2"
+  type: "ReLU"
+  bottom: "conv1_2"
+  top: "conv1_2"
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1_2"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "conv2_1"
+  type: "Convolution"
+  bottom: "pool1"
+  top: "conv2_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu2_1"
+  type: "ReLU"
+  bottom: "conv2_1"
+  top: "conv2_1"
+}
+layer {
+  name: "conv2_2"
+  type: "Convolution"
+  bottom: "conv2_1"
+  top: "conv2_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu2_2"
+  type: "ReLU"
+  bottom: "conv2_2"
+  top: "conv2_2"
+}
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "conv2_2"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "conv3_1"
+  type: "Convolution"
+  bottom: "pool2"
+  top: "conv3_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_1"
+  type: "ReLU"
+  bottom: "conv3_1"
+  top: "conv3_1"
+}
+layer {
+  name: "conv3_2"
+  type: "Convolution"
+  bottom: "conv3_1"
+  top: "conv3_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_2"
+  type: "ReLU"
+  bottom: "conv3_2"
+  top: "conv3_2"
+}
+layer {
+  name: "conv3_3"
+  type: "Convolution"
+  bottom: "conv3_2"
+  top: "conv3_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_3"
+  type: "ReLU"
+  bottom: "conv3_3"
+  top: "conv3_3"
+}
+layer {
+  name: "pool3"
+  type: "Pooling"
+  bottom: "conv3_3"
+  top: "pool3"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+    pad: 1
+  }
+}
+layer {
+  name: "conv4_1"
+  type: "Convolution"
+  bottom: "pool3"
+  top: "conv4_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_1"
+  type: "ReLU"
+  bottom: "conv4_1"
+  top: "conv4_1"
+}
+layer {
+  name: "conv4_2"
+  type: "Convolution"
+  bottom: "conv4_1"
+  top: "conv4_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_2"
+  type: "ReLU"
+  bottom: "conv4_2"
+  top: "conv4_2"
+}
+layer {
+  name: "conv4_3"
+  type: "Convolution"
+  bottom: "conv4_2"
+  top: "conv4_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_3"
+  type: "ReLU"
+  bottom: "conv4_3"
+  top: "conv4_3"
+}
+layer {
+  name: "pool4"
+  type: "Pooling"
+  bottom: "conv4_3"
+  top: "pool4"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 1
+    pad: 1
+  }
+}
+layer {
+  name: "conv5_1"
+  type: "Convolution"
+  bottom: "pool4"
+  top: "conv5_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    pad: 2
+    kernel_size: 3
+    dilation: 2
+  }
+}
+layer {
+  name: "relu5_1"
+  type: "ReLU"
+  bottom: "conv5_1"
+  top: "conv5_1"
+}
+layer {
+  name: "conv5_2"
+  type: "Convolution"
+  bottom: "conv5_1"
+  top: "conv5_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    pad: 2
+    kernel_size: 3
+    dilation: 2
+  }
+}
+layer {
+  name: "relu5_2"
+  type: "ReLU"
+  bottom: "conv5_2"
+  top: "conv5_2"
+}
+layer {
+  name: "conv5_3"
+  type: "Convolution"
+  bottom: "conv5_2"
+  top: "conv5_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    pad: 2
+    kernel_size: 3
+    dilation: 2
+  }
+}
+layer {
+  name: "relu5_3"
+  type: "ReLU"
+  bottom: "conv5_3"
+  top: "conv5_3"
+}
+layer {
+  name: "pool5"
+  type: "Pooling"
+  bottom: "conv5_3"
+  top: "pool5"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 1
+    pad: 1
+  }
+}
+layer {
+  name: "pool5a"
+  type: "Pooling"
+  bottom: "pool5"
+  top: "pool5a"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 1
+    pad: 1
+  }
+}
+layer {
+  name: "fc6_1"
+  type: "Convolution"
+  bottom: "pool5a"
+  top: "fc6_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    pad: 6
+    kernel_size: 3
+    dilation: 6
+  }
+}
+layer {
+  name: "relu6_1"
+  type: "ReLU"
+  bottom: "fc6_1"
+  top: "fc6_1"
+}
+layer {
+  name: "drop6_1"
+  type: "Dropout"
+  bottom: "fc6_1"
+  top: "fc6_1"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7_1"
+  type: "Convolution"
+  bottom: "fc6_1"
+  top: "fc7_1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    kernel_size: 1
+  }
+}
+layer {
+  name: "relu7_1"
+  type: "ReLU"
+  bottom: "fc7_1"
+  top: "fc7_1"
+}
+layer {
+  name: "drop7_1"
+  type: "Dropout"
+  bottom: "fc7_1"
+  top: "fc7_1"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc8-SEC_1"
+  type: "Convolution"
+  bottom: "fc7_1"
+  top: "fc8-SEC_1"
+  param {
+    lr_mult: 10
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 20
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 21
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "fc6_2"
+  type: "Convolution"
+  bottom: "pool5a"
+  top: "fc6_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    pad: 12
+    kernel_size: 3
+    dilation: 12
+  }
+}
+layer {
+  name: "relu6_2"
+  type: "ReLU"
+  bottom: "fc6_2"
+  top: "fc6_2"
+}
+layer {
+  name: "drop6_2"
+  type: "Dropout"
+  bottom: "fc6_2"
+  top: "fc6_2"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7_2"
+  type: "Convolution"
+  bottom: "fc6_2"
+  top: "fc7_2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    kernel_size: 1
+  }
+}
+layer {
+  name: "relu7_2"
+  type: "ReLU"
+  bottom: "fc7_2"
+  top: "fc7_2"
+}
+layer {
+  name: "drop7_2"
+  type: "Dropout"
+  bottom: "fc7_2"
+  top: "fc7_2"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc8-SEC_2"
+  type: "Convolution"
+  bottom: "fc7_2"
+  top: "fc8-SEC_2"
+  param {
+    lr_mult: 10
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 20
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 21
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "fc6_3"
+  type: "Convolution"
+  bottom: "pool5a"
+  top: "fc6_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    pad: 18
+    kernel_size: 3
+    dilation: 18
+  }
+}
+layer {
+  name: "relu6_3"
+  type: "ReLU"
+  bottom: "fc6_3"
+  top: "fc6_3"
+}
+layer {
+  name: "drop6_3"
+  type: "Dropout"
+  bottom: "fc6_3"
+  top: "fc6_3"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7_3"
+  type: "Convolution"
+  bottom: "fc6_3"
+  top: "fc7_3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    kernel_size: 1
+  }
+}
+layer {
+  name: "relu7_3"
+  type: "ReLU"
+  bottom: "fc7_3"
+  top: "fc7_3"
+}
+layer {
+  name: "drop7_3"
+  type: "Dropout"
+  bottom: "fc7_3"
+  top: "fc7_3"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc8-SEC_3"
+  type: "Convolution"
+  bottom: "fc7_3"
+  top: "fc8-SEC_3"
+  param {
+    lr_mult: 10
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 20
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 21
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "fc6_4"
+  type: "Convolution"
+  bottom: "pool5a"
+  top: "fc6_4"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    pad: 24
+    kernel_size: 3
+    dilation: 24
+  }
+}
+layer {
+  name: "relu6_4"
+  type: "ReLU"
+  bottom: "fc6_4"
+  top: "fc6_4"
+}
+layer {
+  name: "drop6_4"
+  type: "Dropout"
+  bottom: "fc6_4"
+  top: "fc6_4"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7_4"
+  type: "Convolution"
+  bottom: "fc6_4"
+  top: "fc7_4"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    kernel_size: 1
+  }
+}
+layer {
+  name: "relu7_4"
+  type: "ReLU"
+  bottom: "fc7_4"
+  top: "fc7_4"
+}
+layer {
+  name: "drop7_4"
+  type: "Dropout"
+  bottom: "fc7_4"
+  top: "fc7_4"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc8-SEC_4"
+  type: "Convolution"
+  bottom: "fc7_4"
+  top: "fc8-SEC_4"
+  param {
+    lr_mult: 10
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 20
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 21
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "fc8-SEC"
+  type: "Eltwise"
+  bottom: "fc8-SEC_1"
+  bottom: "fc8-SEC_2"
+  bottom: "fc8-SEC_3"
+  bottom: "fc8-SEC_4"
+  top: "fc8-SEC"
+  eltwise_param {
+    operation: SUM
+  }
+}
+I0312 16:34:32.594941 10704 net.cpp:413] Input 0 -> images
+I0312 16:34:32.606333 10704 layer_factory.hpp:77] Creating layer conv1_1
+I0312 16:34:32.606369 10704 net.cpp:106] Creating Layer conv1_1
+I0312 16:34:32.606379 10704 net.cpp:454] conv1_1 <- images
+I0312 16:34:32.606391 10704 net.cpp:411] conv1_1 -> conv1_1
+I0312 16:34:32.607940 10704 net.cpp:150] Setting up conv1_1
+I0312 16:34:32.607966 10704 net.cpp:157] Top shape: 1 64 321 321 (6594624)
+I0312 16:34:32.607975 10704 net.cpp:165] Memory required for data: 26378496
+I0312 16:34:32.607995 10704 layer_factory.hpp:77] Creating layer relu1_1
+I0312 16:34:32.608011 10704 net.cpp:106] Creating Layer relu1_1
+I0312 16:34:32.608022 10704 net.cpp:454] relu1_1 <- conv1_1
+I0312 16:34:32.608032 10704 net.cpp:397] relu1_1 -> conv1_1 (in-place)
+I0312 16:34:32.608045 10704 net.cpp:150] Setting up relu1_1
+I0312 16:34:32.608055 10704 net.cpp:157] Top shape: 1 64 321 321 (6594624)
+I0312 16:34:32.608062 10704 net.cpp:165] Memory required for data: 52756992
+I0312 16:34:32.608070 10704 layer_factory.hpp:77] Creating layer conv1_2
+I0312 16:34:32.608084 10704 net.cpp:106] Creating Layer conv1_2
+I0312 16:34:32.608091 10704 net.cpp:454] conv1_2 <- conv1_1
+I0312 16:34:32.608103 10704 net.cpp:411] conv1_2 -> conv1_2
+I0312 16:34:32.609035 10704 net.cpp:150] Setting up conv1_2
+I0312 16:34:32.609059 10704 net.cpp:157] Top shape: 1 64 321 321 (6594624)
+I0312 16:34:32.609067 10704 net.cpp:165] Memory required for data: 79135488
+I0312 16:34:32.609083 10704 layer_factory.hpp:77] Creating layer relu1_2
+I0312 16:34:32.609094 10704 net.cpp:106] Creating Layer relu1_2
+I0312 16:34:32.609103 10704 net.cpp:454] relu1_2 <- conv1_2
+I0312 16:34:32.609115 10704 net.cpp:397] relu1_2 -> conv1_2 (in-place)
+I0312 16:34:32.609127 10704 net.cpp:150] Setting up relu1_2
+I0312 16:34:32.609135 10704 net.cpp:157] Top shape: 1 64 321 321 (6594624)
+I0312 16:34:32.609143 10704 net.cpp:165] Memory required for data: 105513984
+I0312 16:34:32.609149 10704 layer_factory.hpp:77] Creating layer pool1
+I0312 16:34:32.609163 10704 net.cpp:106] Creating Layer pool1
+I0312 16:34:32.609169 10704 net.cpp:454] pool1 <- conv1_2
+I0312 16:34:32.609179 10704 net.cpp:411] pool1 -> pool1
+I0312 16:34:32.609225 10704 net.cpp:150] Setting up pool1
+I0312 16:34:32.609237 10704 net.cpp:157] Top shape: 1 64 161 161 (1658944)
+I0312 16:34:32.609244 10704 net.cpp:165] Memory required for data: 112149760
+I0312 16:34:32.609251 10704 layer_factory.hpp:77] Creating layer conv2_1
+I0312 16:34:32.609266 10704 net.cpp:106] Creating Layer conv2_1
+I0312 16:34:32.609273 10704 net.cpp:454] conv2_1 <- pool1
+I0312 16:34:32.609284 10704 net.cpp:411] conv2_1 -> conv2_1
+I0312 16:34:32.610177 10704 net.cpp:150] Setting up conv2_1
+I0312 16:34:32.610203 10704 net.cpp:157] Top shape: 1 128 161 161 (3317888)
+I0312 16:34:32.610211 10704 net.cpp:165] Memory required for data: 125421312
+I0312 16:34:32.610226 10704 layer_factory.hpp:77] Creating layer relu2_1
+I0312 16:34:32.610237 10704 net.cpp:106] Creating Layer relu2_1
+I0312 16:34:32.610245 10704 net.cpp:454] relu2_1 <- conv2_1
+I0312 16:34:32.610255 10704 net.cpp:397] relu2_1 -> conv2_1 (in-place)
+I0312 16:34:32.610267 10704 net.cpp:150] Setting up relu2_1
+I0312 16:34:32.610276 10704 net.cpp:157] Top shape: 1 128 161 161 (3317888)
+I0312 16:34:32.610283 10704 net.cpp:165] Memory required for data: 138692864
+I0312 16:34:32.610291 10704 layer_factory.hpp:77] Creating layer conv2_2
+I0312 16:34:32.610303 10704 net.cpp:106] Creating Layer conv2_2
+I0312 16:34:32.610311 10704 net.cpp:454] conv2_2 <- conv2_1
+I0312 16:34:32.610322 10704 net.cpp:411] conv2_2 -> conv2_2
+I0312 16:34:32.610671 10704 net.cpp:150] Setting up conv2_2
+I0312 16:34:32.610688 10704 net.cpp:157] Top shape: 1 128 161 161 (3317888)
+I0312 16:34:32.610697 10704 net.cpp:165] Memory required for data: 151964416
+I0312 16:34:32.610709 10704 layer_factory.hpp:77] Creating layer relu2_2
+I0312 16:34:32.610723 10704 net.cpp:106] Creating Layer relu2_2
+I0312 16:34:32.610731 10704 net.cpp:454] relu2_2 <- conv2_2
+I0312 16:34:32.610740 10704 net.cpp:397] relu2_2 -> conv2_2 (in-place)
+I0312 16:34:32.610751 10704 net.cpp:150] Setting up relu2_2
+I0312 16:34:32.610760 10704 net.cpp:157] Top shape: 1 128 161 161 (3317888)
+I0312 16:34:32.610769 10704 net.cpp:165] Memory required for data: 165235968
+I0312 16:34:32.610775 10704 layer_factory.hpp:77] Creating layer pool2
+I0312 16:34:32.610785 10704 net.cpp:106] Creating Layer pool2
+I0312 16:34:32.610793 10704 net.cpp:454] pool2 <- conv2_2
+I0312 16:34:32.610801 10704 net.cpp:411] pool2 -> pool2
+I0312 16:34:32.610846 10704 net.cpp:150] Setting up pool2
+I0312 16:34:32.610857 10704 net.cpp:157] Top shape: 1 128 81 81 (839808)
+I0312 16:34:32.610864 10704 net.cpp:165] Memory required for data: 168595200
+I0312 16:34:32.610872 10704 layer_factory.hpp:77] Creating layer conv3_1
+I0312 16:34:32.610884 10704 net.cpp:106] Creating Layer conv3_1
+I0312 16:34:32.610893 10704 net.cpp:454] conv3_1 <- pool2
+I0312 16:34:32.610901 10704 net.cpp:411] conv3_1 -> conv3_1
+I0312 16:34:32.612596 10704 net.cpp:150] Setting up conv3_1
+I0312 16:34:32.612619 10704 net.cpp:157] Top shape: 1 256 81 81 (1679616)
+I0312 16:34:32.612627 10704 net.cpp:165] Memory required for data: 175313664
+I0312 16:34:32.612643 10704 layer_factory.hpp:77] Creating layer relu3_1
+I0312 16:34:32.612655 10704 net.cpp:106] Creating Layer relu3_1
+I0312 16:34:32.612663 10704 net.cpp:454] relu3_1 <- conv3_1
+I0312 16:34:32.612673 10704 net.cpp:397] relu3_1 -> conv3_1 (in-place)
+I0312 16:34:32.612685 10704 net.cpp:150] Setting up relu3_1
+I0312 16:34:32.612694 10704 net.cpp:157] Top shape: 1 256 81 81 (1679616)
+I0312 16:34:32.612702 10704 net.cpp:165] Memory required for data: 182032128
+I0312 16:34:32.612709 10704 layer_factory.hpp:77] Creating layer conv3_2
+I0312 16:34:32.612721 10704 net.cpp:106] Creating Layer conv3_2
+I0312 16:34:32.612730 10704 net.cpp:454] conv3_2 <- conv3_1
+I0312 16:34:32.612738 10704 net.cpp:411] conv3_2 -> conv3_2
+I0312 16:34:32.614452 10704 net.cpp:150] Setting up conv3_2
+I0312 16:34:32.614475 10704 net.cpp:157] Top shape: 1 256 81 81 (1679616)
+I0312 16:34:32.614485 10704 net.cpp:165] Memory required for data: 188750592
+I0312 16:34:32.614495 10704 layer_factory.hpp:77] Creating layer relu3_2
+I0312 16:34:32.614508 10704 net.cpp:106] Creating Layer relu3_2
+I0312 16:34:32.614517 10704 net.cpp:454] relu3_2 <- conv3_2
+I0312 16:34:32.614526 10704 net.cpp:397] relu3_2 -> conv3_2 (in-place)
+I0312 16:34:32.614538 10704 net.cpp:150] Setting up relu3_2
+I0312 16:34:32.614548 10704 net.cpp:157] Top shape: 1 256 81 81 (1679616)
+I0312 16:34:32.614555 10704 net.cpp:165] Memory required for data: 195469056
+I0312 16:34:32.614563 10704 layer_factory.hpp:77] Creating layer conv3_3
+I0312 16:34:32.614573 10704 net.cpp:106] Creating Layer conv3_3
+I0312 16:34:32.614581 10704 net.cpp:454] conv3_3 <- conv3_2
+I0312 16:34:32.614593 10704 net.cpp:411] conv3_3 -> conv3_3
+I0312 16:34:32.616328 10704 net.cpp:150] Setting up conv3_3
+I0312 16:34:32.616350 10704 net.cpp:157] Top shape: 1 256 81 81 (1679616)
+I0312 16:34:32.616359 10704 net.cpp:165] Memory required for data: 202187520
+I0312 16:34:32.616371 10704 layer_factory.hpp:77] Creating layer relu3_3
+I0312 16:34:32.616384 10704 net.cpp:106] Creating Layer relu3_3
+I0312 16:34:32.616391 10704 net.cpp:454] relu3_3 <- conv3_3
+I0312 16:34:32.616402 10704 net.cpp:397] relu3_3 -> conv3_3 (in-place)
+I0312 16:34:32.616415 10704 net.cpp:150] Setting up relu3_3
+I0312 16:34:32.616423 10704 net.cpp:157] Top shape: 1 256 81 81 (1679616)
+I0312 16:34:32.616430 10704 net.cpp:165] Memory required for data: 208905984
+I0312 16:34:32.616438 10704 layer_factory.hpp:77] Creating layer pool3
+I0312 16:34:32.616449 10704 net.cpp:106] Creating Layer pool3
+I0312 16:34:32.616457 10704 net.cpp:454] pool3 <- conv3_3
+I0312 16:34:32.616466 10704 net.cpp:411] pool3 -> pool3
+I0312 16:34:32.616511 10704 net.cpp:150] Setting up pool3
+I0312 16:34:32.616523 10704 net.cpp:157] Top shape: 1 256 41 41 (430336)
+I0312 16:34:32.616529 10704 net.cpp:165] Memory required for data: 210627328
+I0312 16:34:32.616538 10704 layer_factory.hpp:77] Creating layer conv4_1
+I0312 16:34:32.616549 10704 net.cpp:106] Creating Layer conv4_1
+I0312 16:34:32.616557 10704 net.cpp:454] conv4_1 <- pool3
+I0312 16:34:32.616569 10704 net.cpp:411] conv4_1 -> conv4_1
+I0312 16:34:32.620102 10704 net.cpp:150] Setting up conv4_1
+I0312 16:34:32.620128 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.620139 10704 net.cpp:165] Memory required for data: 214070016
+I0312 16:34:32.620158 10704 layer_factory.hpp:77] Creating layer relu4_1
+I0312 16:34:32.620177 10704 net.cpp:106] Creating Layer relu4_1
+I0312 16:34:32.620187 10704 net.cpp:454] relu4_1 <- conv4_1
+I0312 16:34:32.620198 10704 net.cpp:397] relu4_1 -> conv4_1 (in-place)
+I0312 16:34:32.620213 10704 net.cpp:150] Setting up relu4_1
+I0312 16:34:32.620226 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.620239 10704 net.cpp:165] Memory required for data: 217512704
+I0312 16:34:32.620252 10704 layer_factory.hpp:77] Creating layer conv4_2
+I0312 16:34:32.620271 10704 net.cpp:106] Creating Layer conv4_2
+I0312 16:34:32.620281 10704 net.cpp:454] conv4_2 <- conv4_1
+I0312 16:34:32.620302 10704 net.cpp:411] conv4_2 -> conv4_2
+I0312 16:34:32.625466 10704 net.cpp:150] Setting up conv4_2
+I0312 16:34:32.625488 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.625504 10704 net.cpp:165] Memory required for data: 220955392
+I0312 16:34:32.625520 10704 layer_factory.hpp:77] Creating layer relu4_2
+I0312 16:34:32.625531 10704 net.cpp:106] Creating Layer relu4_2
+I0312 16:34:32.625540 10704 net.cpp:454] relu4_2 <- conv4_2
+I0312 16:34:32.625550 10704 net.cpp:397] relu4_2 -> conv4_2 (in-place)
+I0312 16:34:32.625561 10704 net.cpp:150] Setting up relu4_2
+I0312 16:34:32.625571 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.625577 10704 net.cpp:165] Memory required for data: 224398080
+I0312 16:34:32.625584 10704 layer_factory.hpp:77] Creating layer conv4_3
+I0312 16:34:32.625597 10704 net.cpp:106] Creating Layer conv4_3
+I0312 16:34:32.625604 10704 net.cpp:454] conv4_3 <- conv4_2
+I0312 16:34:32.625615 10704 net.cpp:411] conv4_3 -> conv4_3
+I0312 16:34:32.630647 10704 net.cpp:150] Setting up conv4_3
+I0312 16:34:32.630671 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.630679 10704 net.cpp:165] Memory required for data: 227840768
+I0312 16:34:32.630692 10704 layer_factory.hpp:77] Creating layer relu4_3
+I0312 16:34:32.630702 10704 net.cpp:106] Creating Layer relu4_3
+I0312 16:34:32.630710 10704 net.cpp:454] relu4_3 <- conv4_3
+I0312 16:34:32.630720 10704 net.cpp:397] relu4_3 -> conv4_3 (in-place)
+I0312 16:34:32.630731 10704 net.cpp:150] Setting up relu4_3
+I0312 16:34:32.630740 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.630748 10704 net.cpp:165] Memory required for data: 231283456
+I0312 16:34:32.630755 10704 layer_factory.hpp:77] Creating layer pool4
+I0312 16:34:32.630765 10704 net.cpp:106] Creating Layer pool4
+I0312 16:34:32.630772 10704 net.cpp:454] pool4 <- conv4_3
+I0312 16:34:32.630781 10704 net.cpp:411] pool4 -> pool4
+I0312 16:34:32.630825 10704 net.cpp:150] Setting up pool4
+I0312 16:34:32.630836 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.630842 10704 net.cpp:165] Memory required for data: 234726144
+I0312 16:34:32.630849 10704 layer_factory.hpp:77] Creating layer conv5_1
+I0312 16:34:32.630864 10704 net.cpp:106] Creating Layer conv5_1
+I0312 16:34:32.630872 10704 net.cpp:454] conv5_1 <- pool4
+I0312 16:34:32.630882 10704 net.cpp:411] conv5_1 -> conv5_1
+I0312 16:34:32.636039 10704 net.cpp:150] Setting up conv5_1
+I0312 16:34:32.636071 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.636080 10704 net.cpp:165] Memory required for data: 238168832
+I0312 16:34:32.636090 10704 layer_factory.hpp:77] Creating layer relu5_1
+I0312 16:34:32.636101 10704 net.cpp:106] Creating Layer relu5_1
+I0312 16:34:32.636111 10704 net.cpp:454] relu5_1 <- conv5_1
+I0312 16:34:32.636122 10704 net.cpp:397] relu5_1 -> conv5_1 (in-place)
+I0312 16:34:32.636133 10704 net.cpp:150] Setting up relu5_1
+I0312 16:34:32.636142 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.636149 10704 net.cpp:165] Memory required for data: 241611520
+I0312 16:34:32.636157 10704 layer_factory.hpp:77] Creating layer conv5_2
+I0312 16:34:32.636169 10704 net.cpp:106] Creating Layer conv5_2
+I0312 16:34:32.636178 10704 net.cpp:454] conv5_2 <- conv5_1
+I0312 16:34:32.636185 10704 net.cpp:411] conv5_2 -> conv5_2
+I0312 16:34:32.641113 10704 net.cpp:150] Setting up conv5_2
+I0312 16:34:32.641136 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.641144 10704 net.cpp:165] Memory required for data: 245054208
+I0312 16:34:32.641156 10704 layer_factory.hpp:77] Creating layer relu5_2
+I0312 16:34:32.641168 10704 net.cpp:106] Creating Layer relu5_2
+I0312 16:34:32.641177 10704 net.cpp:454] relu5_2 <- conv5_2
+I0312 16:34:32.641186 10704 net.cpp:397] relu5_2 -> conv5_2 (in-place)
+I0312 16:34:32.641197 10704 net.cpp:150] Setting up relu5_2
+I0312 16:34:32.641206 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.641213 10704 net.cpp:165] Memory required for data: 248496896
+I0312 16:34:32.641221 10704 layer_factory.hpp:77] Creating layer conv5_3
+I0312 16:34:32.641233 10704 net.cpp:106] Creating Layer conv5_3
+I0312 16:34:32.641242 10704 net.cpp:454] conv5_3 <- conv5_2
+I0312 16:34:32.641252 10704 net.cpp:411] conv5_3 -> conv5_3
+I0312 16:34:32.646245 10704 net.cpp:150] Setting up conv5_3
+I0312 16:34:32.646267 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.646276 10704 net.cpp:165] Memory required for data: 251939584
+I0312 16:34:32.646287 10704 layer_factory.hpp:77] Creating layer relu5_3
+I0312 16:34:32.646307 10704 net.cpp:106] Creating Layer relu5_3
+I0312 16:34:32.646315 10704 net.cpp:454] relu5_3 <- conv5_3
+I0312 16:34:32.646325 10704 net.cpp:397] relu5_3 -> conv5_3 (in-place)
+I0312 16:34:32.646337 10704 net.cpp:150] Setting up relu5_3
+I0312 16:34:32.646345 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.646353 10704 net.cpp:165] Memory required for data: 255382272
+I0312 16:34:32.646360 10704 layer_factory.hpp:77] Creating layer pool5
+I0312 16:34:32.646370 10704 net.cpp:106] Creating Layer pool5
+I0312 16:34:32.646378 10704 net.cpp:454] pool5 <- conv5_3
+I0312 16:34:32.646387 10704 net.cpp:411] pool5 -> pool5
+I0312 16:34:32.646432 10704 net.cpp:150] Setting up pool5
+I0312 16:34:32.646442 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.646450 10704 net.cpp:165] Memory required for data: 258824960
+I0312 16:34:32.646457 10704 layer_factory.hpp:77] Creating layer pool5a
+I0312 16:34:32.646466 10704 net.cpp:106] Creating Layer pool5a
+I0312 16:34:32.646473 10704 net.cpp:454] pool5a <- pool5
+I0312 16:34:32.646484 10704 net.cpp:411] pool5a -> pool5a
+I0312 16:34:32.646522 10704 net.cpp:150] Setting up pool5a
+I0312 16:34:32.646533 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.646543 10704 net.cpp:165] Memory required for data: 262267648
+I0312 16:34:32.646553 10704 layer_factory.hpp:77] Creating layer pool5a_pool5a_0_split
+I0312 16:34:32.646580 10704 net.cpp:106] Creating Layer pool5a_pool5a_0_split
+I0312 16:34:32.646589 10704 net.cpp:454] pool5a_pool5a_0_split <- pool5a
+I0312 16:34:32.646600 10704 net.cpp:411] pool5a_pool5a_0_split -> pool5a_pool5a_0_split_0
+I0312 16:34:32.646610 10704 net.cpp:411] pool5a_pool5a_0_split -> pool5a_pool5a_0_split_1
+I0312 16:34:32.646621 10704 net.cpp:411] pool5a_pool5a_0_split -> pool5a_pool5a_0_split_2
+I0312 16:34:32.646631 10704 net.cpp:411] pool5a_pool5a_0_split -> pool5a_pool5a_0_split_3
+I0312 16:34:32.646692 10704 net.cpp:150] Setting up pool5a_pool5a_0_split
+I0312 16:34:32.646703 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.646714 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.646723 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.646731 10704 net.cpp:157] Top shape: 1 512 41 41 (860672)
+I0312 16:34:32.646740 10704 net.cpp:165] Memory required for data: 276038400
+I0312 16:34:32.646749 10704 layer_factory.hpp:77] Creating layer fc6_1
+I0312 16:34:32.646762 10704 net.cpp:106] Creating Layer fc6_1
+I0312 16:34:32.646773 10704 net.cpp:454] fc6_1 <- pool5a_pool5a_0_split_0
+I0312 16:34:32.646783 10704 net.cpp:411] fc6_1 -> fc6_1
+I0312 16:34:32.656277 10704 net.cpp:150] Setting up fc6_1
+I0312 16:34:32.656301 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.656309 10704 net.cpp:165] Memory required for data: 282923776
+I0312 16:34:32.656321 10704 layer_factory.hpp:77] Creating layer relu6_1
+I0312 16:34:32.656332 10704 net.cpp:106] Creating Layer relu6_1
+I0312 16:34:32.656340 10704 net.cpp:454] relu6_1 <- fc6_1
+I0312 16:34:32.656352 10704 net.cpp:397] relu6_1 -> fc6_1 (in-place)
+I0312 16:34:32.656363 10704 net.cpp:150] Setting up relu6_1
+I0312 16:34:32.656373 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.656380 10704 net.cpp:165] Memory required for data: 289809152
+I0312 16:34:32.656388 10704 layer_factory.hpp:77] Creating layer drop6_1
+I0312 16:34:32.656401 10704 net.cpp:106] Creating Layer drop6_1
+I0312 16:34:32.656411 10704 net.cpp:454] drop6_1 <- fc6_1
+I0312 16:34:32.656419 10704 net.cpp:397] drop6_1 -> fc6_1 (in-place)
+I0312 16:34:32.656451 10704 net.cpp:150] Setting up drop6_1
+I0312 16:34:32.656462 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.656469 10704 net.cpp:165] Memory required for data: 296694528
+I0312 16:34:32.656476 10704 layer_factory.hpp:77] Creating layer fc7_1
+I0312 16:34:32.656489 10704 net.cpp:106] Creating Layer fc7_1
+I0312 16:34:32.656497 10704 net.cpp:454] fc7_1 <- fc6_1
+I0312 16:34:32.656507 10704 net.cpp:411] fc7_1 -> fc7_1
+I0312 16:34:32.658989 10704 net.cpp:150] Setting up fc7_1
+I0312 16:34:32.659014 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.659023 10704 net.cpp:165] Memory required for data: 303579904
+I0312 16:34:32.659034 10704 layer_factory.hpp:77] Creating layer relu7_1
+I0312 16:34:32.659044 10704 net.cpp:106] Creating Layer relu7_1
+I0312 16:34:32.659052 10704 net.cpp:454] relu7_1 <- fc7_1
+I0312 16:34:32.659062 10704 net.cpp:397] relu7_1 -> fc7_1 (in-place)
+I0312 16:34:32.659075 10704 net.cpp:150] Setting up relu7_1
+I0312 16:34:32.659083 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.659090 10704 net.cpp:165] Memory required for data: 310465280
+I0312 16:34:32.659097 10704 layer_factory.hpp:77] Creating layer drop7_1
+I0312 16:34:32.659107 10704 net.cpp:106] Creating Layer drop7_1
+I0312 16:34:32.659116 10704 net.cpp:454] drop7_1 <- fc7_1
+I0312 16:34:32.659123 10704 net.cpp:397] drop7_1 -> fc7_1 (in-place)
+I0312 16:34:32.659154 10704 net.cpp:150] Setting up drop7_1
+I0312 16:34:32.659164 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.659171 10704 net.cpp:165] Memory required for data: 317350656
+I0312 16:34:32.659178 10704 layer_factory.hpp:77] Creating layer fc8-SEC_1
+I0312 16:34:32.659193 10704 net.cpp:106] Creating Layer fc8-SEC_1
+I0312 16:34:32.659200 10704 net.cpp:454] fc8-SEC_1 <- fc7_1
+I0312 16:34:32.659210 10704 net.cpp:411] fc8-SEC_1 -> fc8-SEC_1
+I0312 16:34:32.660176 10704 net.cpp:150] Setting up fc8-SEC_1
+I0312 16:34:32.660194 10704 net.cpp:157] Top shape: 1 21 41 41 (35301)
+I0312 16:34:32.660202 10704 net.cpp:165] Memory required for data: 317491860
+I0312 16:34:32.660213 10704 layer_factory.hpp:77] Creating layer fc6_2
+I0312 16:34:32.660228 10704 net.cpp:106] Creating Layer fc6_2
+I0312 16:34:32.660236 10704 net.cpp:454] fc6_2 <- pool5a_pool5a_0_split_1
+I0312 16:34:32.660248 10704 net.cpp:411] fc6_2 -> fc6_2
+I0312 16:34:32.671417 10704 net.cpp:150] Setting up fc6_2
+I0312 16:34:32.671458 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.671468 10704 net.cpp:165] Memory required for data: 324377236
+I0312 16:34:32.671489 10704 layer_factory.hpp:77] Creating layer relu6_2
+I0312 16:34:32.671501 10704 net.cpp:106] Creating Layer relu6_2
+I0312 16:34:32.671512 10704 net.cpp:454] relu6_2 <- fc6_2
+I0312 16:34:32.671525 10704 net.cpp:397] relu6_2 -> fc6_2 (in-place)
+I0312 16:34:32.671538 10704 net.cpp:150] Setting up relu6_2
+I0312 16:34:32.671548 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.671556 10704 net.cpp:165] Memory required for data: 331262612
+I0312 16:34:32.671563 10704 layer_factory.hpp:77] Creating layer drop6_2
+I0312 16:34:32.671574 10704 net.cpp:106] Creating Layer drop6_2
+I0312 16:34:32.671582 10704 net.cpp:454] drop6_2 <- fc6_2
+I0312 16:34:32.671593 10704 net.cpp:397] drop6_2 -> fc6_2 (in-place)
+I0312 16:34:32.671624 10704 net.cpp:150] Setting up drop6_2
+I0312 16:34:32.671635 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.671644 10704 net.cpp:165] Memory required for data: 338147988
+I0312 16:34:32.671651 10704 layer_factory.hpp:77] Creating layer fc7_2
+I0312 16:34:32.671666 10704 net.cpp:106] Creating Layer fc7_2
+I0312 16:34:32.671674 10704 net.cpp:454] fc7_2 <- fc6_2
+I0312 16:34:32.671685 10704 net.cpp:411] fc7_2 -> fc7_2
+I0312 16:34:32.674376 10704 net.cpp:150] Setting up fc7_2
+I0312 16:34:32.674402 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.674412 10704 net.cpp:165] Memory required for data: 345033364
+I0312 16:34:32.674423 10704 layer_factory.hpp:77] Creating layer relu7_2
+I0312 16:34:32.674437 10704 net.cpp:106] Creating Layer relu7_2
+I0312 16:34:32.674446 10704 net.cpp:454] relu7_2 <- fc7_2
+I0312 16:34:32.674456 10704 net.cpp:397] relu7_2 -> fc7_2 (in-place)
+I0312 16:34:32.674469 10704 net.cpp:150] Setting up relu7_2
+I0312 16:34:32.674479 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.674487 10704 net.cpp:165] Memory required for data: 351918740
+I0312 16:34:32.674494 10704 layer_factory.hpp:77] Creating layer drop7_2
+I0312 16:34:32.674505 10704 net.cpp:106] Creating Layer drop7_2
+I0312 16:34:32.674513 10704 net.cpp:454] drop7_2 <- fc7_2
+I0312 16:34:32.674525 10704 net.cpp:397] drop7_2 -> fc7_2 (in-place)
+I0312 16:34:32.674556 10704 net.cpp:150] Setting up drop7_2
+I0312 16:34:32.674568 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.674576 10704 net.cpp:165] Memory required for data: 358804116
+I0312 16:34:32.674584 10704 layer_factory.hpp:77] Creating layer fc8-SEC_2
+I0312 16:34:32.674597 10704 net.cpp:106] Creating Layer fc8-SEC_2
+I0312 16:34:32.674605 10704 net.cpp:454] fc8-SEC_2 <- fc7_2
+I0312 16:34:32.674616 10704 net.cpp:411] fc8-SEC_2 -> fc8-SEC_2
+I0312 16:34:32.675158 10704 net.cpp:150] Setting up fc8-SEC_2
+I0312 16:34:32.675176 10704 net.cpp:157] Top shape: 1 21 41 41 (35301)
+I0312 16:34:32.675185 10704 net.cpp:165] Memory required for data: 358945320
+I0312 16:34:32.675196 10704 layer_factory.hpp:77] Creating layer fc6_3
+I0312 16:34:32.675210 10704 net.cpp:106] Creating Layer fc6_3
+I0312 16:34:32.675220 10704 net.cpp:454] fc6_3 <- pool5a_pool5a_0_split_2
+I0312 16:34:32.675251 10704 net.cpp:411] fc6_3 -> fc6_3
+I0312 16:34:32.684976 10704 net.cpp:150] Setting up fc6_3
+I0312 16:34:32.684999 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.685007 10704 net.cpp:165] Memory required for data: 365830696
+I0312 16:34:32.685019 10704 layer_factory.hpp:77] Creating layer relu6_3
+I0312 16:34:32.685036 10704 net.cpp:106] Creating Layer relu6_3
+I0312 16:34:32.685045 10704 net.cpp:454] relu6_3 <- fc6_3
+I0312 16:34:32.685055 10704 net.cpp:397] relu6_3 -> fc6_3 (in-place)
+I0312 16:34:32.685067 10704 net.cpp:150] Setting up relu6_3
+I0312 16:34:32.685076 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.685083 10704 net.cpp:165] Memory required for data: 372716072
+I0312 16:34:32.685091 10704 layer_factory.hpp:77] Creating layer drop6_3
+I0312 16:34:32.685108 10704 net.cpp:106] Creating Layer drop6_3
+I0312 16:34:32.685115 10704 net.cpp:454] drop6_3 <- fc6_3
+I0312 16:34:32.685125 10704 net.cpp:397] drop6_3 -> fc6_3 (in-place)
+I0312 16:34:32.685155 10704 net.cpp:150] Setting up drop6_3
+I0312 16:34:32.685166 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.685173 10704 net.cpp:165] Memory required for data: 379601448
+I0312 16:34:32.685181 10704 layer_factory.hpp:77] Creating layer fc7_3
+I0312 16:34:32.685194 10704 net.cpp:106] Creating Layer fc7_3
+I0312 16:34:32.685202 10704 net.cpp:454] fc7_3 <- fc6_3
+I0312 16:34:32.685212 10704 net.cpp:411] fc7_3 -> fc7_3
+I0312 16:34:32.687733 10704 net.cpp:150] Setting up fc7_3
+I0312 16:34:32.687755 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.687763 10704 net.cpp:165] Memory required for data: 386486824
+I0312 16:34:32.687774 10704 layer_factory.hpp:77] Creating layer relu7_3
+I0312 16:34:32.687786 10704 net.cpp:106] Creating Layer relu7_3
+I0312 16:34:32.687795 10704 net.cpp:454] relu7_3 <- fc7_3
+I0312 16:34:32.687805 10704 net.cpp:397] relu7_3 -> fc7_3 (in-place)
+I0312 16:34:32.687816 10704 net.cpp:150] Setting up relu7_3
+I0312 16:34:32.687825 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.687832 10704 net.cpp:165] Memory required for data: 393372200
+I0312 16:34:32.687839 10704 layer_factory.hpp:77] Creating layer drop7_3
+I0312 16:34:32.687850 10704 net.cpp:106] Creating Layer drop7_3
+I0312 16:34:32.687857 10704 net.cpp:454] drop7_3 <- fc7_3
+I0312 16:34:32.687866 10704 net.cpp:397] drop7_3 -> fc7_3 (in-place)
+I0312 16:34:32.687894 10704 net.cpp:150] Setting up drop7_3
+I0312 16:34:32.687904 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.687911 10704 net.cpp:165] Memory required for data: 400257576
+I0312 16:34:32.687918 10704 layer_factory.hpp:77] Creating layer fc8-SEC_3
+I0312 16:34:32.687935 10704 net.cpp:106] Creating Layer fc8-SEC_3
+I0312 16:34:32.687943 10704 net.cpp:454] fc8-SEC_3 <- fc7_3
+I0312 16:34:32.687953 10704 net.cpp:411] fc8-SEC_3 -> fc8-SEC_3
+I0312 16:34:32.688434 10704 net.cpp:150] Setting up fc8-SEC_3
+I0312 16:34:32.688449 10704 net.cpp:157] Top shape: 1 21 41 41 (35301)
+I0312 16:34:32.688457 10704 net.cpp:165] Memory required for data: 400398780
+I0312 16:34:32.688467 10704 layer_factory.hpp:77] Creating layer fc6_4
+I0312 16:34:32.688482 10704 net.cpp:106] Creating Layer fc6_4
+I0312 16:34:32.688490 10704 net.cpp:454] fc6_4 <- pool5a_pool5a_0_split_3
+I0312 16:34:32.688500 10704 net.cpp:411] fc6_4 -> fc6_4
+I0312 16:34:32.698014 10704 net.cpp:150] Setting up fc6_4
+I0312 16:34:32.698038 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.698055 10704 net.cpp:165] Memory required for data: 407284156
+I0312 16:34:32.698066 10704 layer_factory.hpp:77] Creating layer relu6_4
+I0312 16:34:32.698077 10704 net.cpp:106] Creating Layer relu6_4
+I0312 16:34:32.698086 10704 net.cpp:454] relu6_4 <- fc6_4
+I0312 16:34:32.698096 10704 net.cpp:397] relu6_4 -> fc6_4 (in-place)
+I0312 16:34:32.698108 10704 net.cpp:150] Setting up relu6_4
+I0312 16:34:32.698117 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.698124 10704 net.cpp:165] Memory required for data: 414169532
+I0312 16:34:32.698132 10704 layer_factory.hpp:77] Creating layer drop6_4
+I0312 16:34:32.698141 10704 net.cpp:106] Creating Layer drop6_4
+I0312 16:34:32.698148 10704 net.cpp:454] drop6_4 <- fc6_4
+I0312 16:34:32.698158 10704 net.cpp:397] drop6_4 -> fc6_4 (in-place)
+I0312 16:34:32.698187 10704 net.cpp:150] Setting up drop6_4
+I0312 16:34:32.698197 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.698204 10704 net.cpp:165] Memory required for data: 421054908
+I0312 16:34:32.698211 10704 layer_factory.hpp:77] Creating layer fc7_4
+I0312 16:34:32.698225 10704 net.cpp:106] Creating Layer fc7_4
+I0312 16:34:32.698232 10704 net.cpp:454] fc7_4 <- fc6_4
+I0312 16:34:32.698240 10704 net.cpp:411] fc7_4 -> fc7_4
+I0312 16:34:32.700772 10704 net.cpp:150] Setting up fc7_4
+I0312 16:34:32.700793 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.700801 10704 net.cpp:165] Memory required for data: 427940284
+I0312 16:34:32.700814 10704 layer_factory.hpp:77] Creating layer relu7_4
+I0312 16:34:32.700824 10704 net.cpp:106] Creating Layer relu7_4
+I0312 16:34:32.700832 10704 net.cpp:454] relu7_4 <- fc7_4
+I0312 16:34:32.700843 10704 net.cpp:397] relu7_4 -> fc7_4 (in-place)
+I0312 16:34:32.700855 10704 net.cpp:150] Setting up relu7_4
+I0312 16:34:32.700865 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.700871 10704 net.cpp:165] Memory required for data: 434825660
+I0312 16:34:32.700878 10704 layer_factory.hpp:77] Creating layer drop7_4
+I0312 16:34:32.700888 10704 net.cpp:106] Creating Layer drop7_4
+I0312 16:34:32.700896 10704 net.cpp:454] drop7_4 <- fc7_4
+I0312 16:34:32.700906 10704 net.cpp:397] drop7_4 -> fc7_4 (in-place)
+I0312 16:34:32.700934 10704 net.cpp:150] Setting up drop7_4
+I0312 16:34:32.700945 10704 net.cpp:157] Top shape: 1 1024 41 41 (1721344)
+I0312 16:34:32.700953 10704 net.cpp:165] Memory required for data: 441711036
+I0312 16:34:32.700959 10704 layer_factory.hpp:77] Creating layer fc8-SEC_4
+I0312 16:34:32.700973 10704 net.cpp:106] Creating Layer fc8-SEC_4
+I0312 16:34:32.700981 10704 net.cpp:454] fc8-SEC_4 <- fc7_4
+I0312 16:34:32.700992 10704 net.cpp:411] fc8-SEC_4 -> fc8-SEC_4
+I0312 16:34:32.701465 10704 net.cpp:150] Setting up fc8-SEC_4
+I0312 16:34:32.701480 10704 net.cpp:157] Top shape: 1 21 41 41 (35301)
+I0312 16:34:32.701488 10704 net.cpp:165] Memory required for data: 441852240
+I0312 16:34:32.701498 10704 layer_factory.hpp:77] Creating layer fc8-SEC
+I0312 16:34:32.701516 10704 net.cpp:106] Creating Layer fc8-SEC
+I0312 16:34:32.701525 10704 net.cpp:454] fc8-SEC <- fc8-SEC_1
+I0312 16:34:32.701534 10704 net.cpp:454] fc8-SEC <- fc8-SEC_2
+I0312 16:34:32.701544 10704 net.cpp:454] fc8-SEC <- fc8-SEC_3
+I0312 16:34:32.701550 10704 net.cpp:454] fc8-SEC <- fc8-SEC_4
+I0312 16:34:32.701560 10704 net.cpp:411] fc8-SEC -> fc8-SEC
+I0312 16:34:32.701591 10704 net.cpp:150] Setting up fc8-SEC
+I0312 16:34:32.701601 10704 net.cpp:157] Top shape: 1 21 41 41 (35301)
+I0312 16:34:32.701608 10704 net.cpp:165] Memory required for data: 441993444
+I0312 16:34:32.701616 10704 net.cpp:228] fc8-SEC does not need backward computation.
+I0312 16:34:32.701627 10704 net.cpp:228] fc8-SEC_4 does not need backward computation.
+I0312 16:34:32.701634 10704 net.cpp:228] drop7_4 does not need backward computation.
+I0312 16:34:32.701642 10704 net.cpp:228] relu7_4 does not need backward computation.
+I0312 16:34:32.701649 10704 net.cpp:228] fc7_4 does not need backward computation.
+I0312 16:34:32.701656 10704 net.cpp:228] drop6_4 does not need backward computation.
+I0312 16:34:32.701663 10704 net.cpp:228] relu6_4 does not need backward computation.
+I0312 16:34:32.701670 10704 net.cpp:228] fc6_4 does not need backward computation.
+I0312 16:34:32.701678 10704 net.cpp:228] fc8-SEC_3 does not need backward computation.
+I0312 16:34:32.701685 10704 net.cpp:228] drop7_3 does not need backward computation.
+I0312 16:34:32.701692 10704 net.cpp:228] relu7_3 does not need backward computation.
+I0312 16:34:32.701699 10704 net.cpp:228] fc7_3 does not need backward computation.
+I0312 16:34:32.701707 10704 net.cpp:228] drop6_3 does not need backward computation.
+I0312 16:34:32.701714 10704 net.cpp:228] relu6_3 does not need backward computation.
+I0312 16:34:32.701721 10704 net.cpp:228] fc6_3 does not need backward computation.
+I0312 16:34:32.701730 10704 net.cpp:228] fc8-SEC_2 does not need backward computation.
+I0312 16:34:32.701736 10704 net.cpp:228] drop7_2 does not need backward computation.
+I0312 16:34:32.701743 10704 net.cpp:228] relu7_2 does not need backward computation.
+I0312 16:34:32.701750 10704 net.cpp:228] fc7_2 does not need backward computation.
+I0312 16:34:32.701759 10704 net.cpp:228] drop6_2 does not need backward computation.
+I0312 16:34:32.701767 10704 net.cpp:228] relu6_2 does not need backward computation.
+I0312 16:34:32.701774 10704 net.cpp:228] fc6_2 does not need backward computation.
+I0312 16:34:32.701782 10704 net.cpp:228] fc8-SEC_1 does not need backward computation.
+I0312 16:34:32.701789 10704 net.cpp:228] drop7_1 does not need backward computation.
+I0312 16:34:32.701797 10704 net.cpp:228] relu7_1 does not need backward computation.
+I0312 16:34:32.701804 10704 net.cpp:228] fc7_1 does not need backward computation.
+I0312 16:34:32.701812 10704 net.cpp:228] drop6_1 does not need backward computation.
+I0312 16:34:32.701818 10704 net.cpp:228] relu6_1 does not need backward computation.
+I0312 16:34:32.701825 10704 net.cpp:228] fc6_1 does not need backward computation.
+I0312 16:34:32.701833 10704 net.cpp:228] pool5a_pool5a_0_split does not need backward computation.
+I0312 16:34:32.701841 10704 net.cpp:228] pool5a does not need backward computation.
+I0312 16:34:32.701849 10704 net.cpp:228] pool5 does not need backward computation.
+I0312 16:34:32.701856 10704 net.cpp:228] relu5_3 does not need backward computation.
+I0312 16:34:32.701864 10704 net.cpp:228] conv5_3 does not need backward computation.
+I0312 16:34:32.701872 10704 net.cpp:228] relu5_2 does not need backward computation.
+I0312 16:34:32.701884 10704 net.cpp:228] conv5_2 does not need backward computation.
+I0312 16:34:32.701891 10704 net.cpp:228] relu5_1 does not need backward computation.
+I0312 16:34:32.701898 10704 net.cpp:228] conv5_1 does not need backward computation.
+I0312 16:34:32.701905 10704 net.cpp:228] pool4 does not need backward computation.
+I0312 16:34:32.701912 10704 net.cpp:228] relu4_3 does not need backward computation.
+I0312 16:34:32.701920 10704 net.cpp:228] conv4_3 does not need backward computation.
+I0312 16:34:32.701927 10704 net.cpp:228] relu4_2 does not need backward computation.
+I0312 16:34:32.701934 10704 net.cpp:228] conv4_2 does not need backward computation.
+I0312 16:34:32.701941 10704 net.cpp:228] relu4_1 does not need backward computation.
+I0312 16:34:32.701948 10704 net.cpp:228] conv4_1 does not need backward computation.
+I0312 16:34:32.701956 10704 net.cpp:228] pool3 does not need backward computation.
+I0312 16:34:32.701963 10704 net.cpp:228] relu3_3 does not need backward computation.
+I0312 16:34:32.701970 10704 net.cpp:228] conv3_3 does not need backward computation.
+I0312 16:34:32.701977 10704 net.cpp:228] relu3_2 does not need backward computation.
+I0312 16:34:32.701984 10704 net.cpp:228] conv3_2 does not need backward computation.
+I0312 16:34:32.701992 10704 net.cpp:228] relu3_1 does not need backward computation.
+I0312 16:34:32.701998 10704 net.cpp:228] conv3_1 does not need backward computation.
+I0312 16:34:32.702006 10704 net.cpp:228] pool2 does not need backward computation.
+I0312 16:34:32.702014 10704 net.cpp:228] relu2_2 does not need backward computation.
+I0312 16:34:32.702023 10704 net.cpp:228] conv2_2 does not need backward computation.
+I0312 16:34:32.702029 10704 net.cpp:228] relu2_1 does not need backward computation.
+I0312 16:34:32.702039 10704 net.cpp:228] conv2_1 does not need backward computation.
+I0312 16:34:32.702045 10704 net.cpp:228] pool1 does not need backward computation.
+I0312 16:34:32.702052 10704 net.cpp:228] relu1_2 does not need backward computation.
+I0312 16:34:32.702059 10704 net.cpp:228] conv1_2 does not need backward computation.
+I0312 16:34:32.702066 10704 net.cpp:228] relu1_1 does not need backward computation.
+I0312 16:34:32.702075 10704 net.cpp:228] conv1_1 does not need backward computation.
+I0312 16:34:32.702081 10704 net.cpp:270] This network produces output fc8-SEC
+I0312 16:34:32.702121 10704 net.cpp:283] Network initialization done.
+I0312 16:34:33.056697 10704 net.cpp:816] Ignoring source layer Input
+I0312 16:34:33.056725 10704 net.cpp:816] Ignoring source layer Annotation
+I0312 16:34:33.056732 10704 net.cpp:816] Ignoring source layer images_Annotation_2_split
+I0312 16:34:33.089687 10704 net.cpp:816] Ignoring source layer Softmax
+I0312 16:34:33.089730 10704 net.cpp:816] Ignoring source layer fc8-SEC-Softmax_Softmax_0_split
+I0312 16:34:33.089737 10704 net.cpp:816] Ignoring source layer CRF
+I0312 16:34:33.089745 10704 net.cpp:816] Ignoring source layer update-seed
+I0312 16:34:33.089751 10704 net.cpp:816] Ignoring source layer loss-Seed
+I0312 16:34:33.089757 10704 net.cpp:816] Ignoring source layer loss-Constrain
+0 2007_000033
+/home/austin/.virtualenvs/pdsrg/local/lib/python2.7/site-packages/scipy/ndimage/interpolation.py:568: UserWarning: From scipy 0.13.0, the output shape of zoom() is calculated with round() instead of int() - for these inputs the size of the returned array has changed.
+  "the returned array has changed.", UserWarning)
+1 2007_000042
+2 2007_000061
+3 2007_000123
+4 2007_000129
+5 2007_000175
+6 2007_000187
+7 2007_000323
+8 2007_000332
+9 2007_000346
+10 2007_000452
+11 2007_000464
+12 2007_000491
+13 2007_000529
+14 2007_000559
+15 2007_000572
+16 2007_000629
+17 2007_000636
+18 2007_000661
+19 2007_000663
+20 2007_000676
+21 2007_000727
+22 2007_000762
+23 2007_000783
+24 2007_000799
+25 2007_000804
+26 2007_000830
+27 2007_000837
+28 2007_000847
+29 2007_000862
+30 2007_000925
+31 2007_000999
+32 2007_001154
+33 2007_001175
+34 2007_001239
+35 2007_001284
+36 2007_001288
+37 2007_001289
+38 2007_001299
+39 2007_001311
+40 2007_001321
+41 2007_001377
+42 2007_001408
+43 2007_001423
+44 2007_001430
+45 2007_001457
+46 2007_001458
+47 2007_001526
+48 2007_001568
+49 2007_001585
+50 2007_001586
+51 2007_001587
+52 2007_001594
+53 2007_001630
+54 2007_001677
+55 2007_001678
+56 2007_001717
+57 2007_001733
+58 2007_001761
+59 2007_001763
+60 2007_001774
+61 2007_001884
+62 2007_001955
+63 2007_002046
+64 2007_002094
+65 2007_002119
+66 2007_002132
+67 2007_002260
+68 2007_002266
+69 2007_002268
+70 2007_002284
+71 2007_002376
+72 2007_002378
+73 2007_002387
+74 2007_002400
+75 2007_002412
+76 2007_002426
+77 2007_002427
+78 2007_002445
+79 2007_002470
+80 2007_002539
+81 2007_002565
+82 2007_002597
+83 2007_002618
+84 2007_002619
+85 2007_002624
+86 2007_002643
+87 2007_002648
+88 2007_002719
+89 2007_002728
+90 2007_002823
+91 2007_002824
+92 2007_002852
+93 2007_002903
+94 2007_003011
+95 2007_003020
+96 2007_003022
+97 2007_003051
+98 2007_003088
+99 2007_003101
+100 2007_003106
+101 2007_003110
+102 2007_003131
+103 2007_003134
+104 2007_003137
+105 2007_003143
+106 2007_003169
+107 2007_003188
+108 2007_003194
+109 2007_003195
+110 2007_003201
+111 2007_003349
+112 2007_003367
+113 2007_003373
+114 2007_003499
+115 2007_003503
+116 2007_003506
+117 2007_003530
+118 2007_003571
+119 2007_003587
+120 2007_003611
+121 2007_003621
+122 2007_003682
+123 2007_003711
+124 2007_003714
+125 2007_003742
+126 2007_003786
+127 2007_003841
+128 2007_003848
+129 2007_003861
+130 2007_003872
+131 2007_003917
+132 2007_003957
+133 2007_003991
+134 2007_004033
+135 2007_004052
+136 2007_004112
+137 2007_004121
+138 2007_004143
+139 2007_004189
+140 2007_004190
+141 2007_004193
+142 2007_004241
+143 2007_004275
+144 2007_004281
+145 2007_004380
+146 2007_004392
+147 2007_004405
+148 2007_004468
+149 2007_004483
+150 2007_004510
+151 2007_004538
+152 2007_004558
+153 2007_004644
+154 2007_004649
+155 2007_004712
+156 2007_004722
+157 2007_004856
+158 2007_004866
+159 2007_004902
+160 2007_004969
+161 2007_005058
+162 2007_005074
+163 2007_005107
+164 2007_005114
+165 2007_005149
+166 2007_005173
+167 2007_005281
+168 2007_005294
+169 2007_005296
+170 2007_005304
+171 2007_005331
+172 2007_005354
+173 2007_005358
+174 2007_005428
+175 2007_005460
+176 2007_005469
+177 2007_005509
+178 2007_005547
+179 2007_005600
+180 2007_005608
+181 2007_005626
+182 2007_005689
+183 2007_005696
+184 2007_005705
+185 2007_005759
+186 2007_005803
+187 2007_005813
+188 2007_005828
+189 2007_005844
+190 2007_005845
+191 2007_005857
+192 2007_005911
+193 2007_005915
+194 2007_005978
+195 2007_006028
+196 2007_006035
+197 2007_006046
+198 2007_006076
+199 2007_006086
+200 2007_006117
+201 2007_006171
+202 2007_006241
+203 2007_006260
+204 2007_006277
+205 2007_006348
+206 2007_006364
+207 2007_006373
+208 2007_006444
+209 2007_006449
+210 2007_006549
+211 2007_006553
+212 2007_006560
+213 2007_006647
+214 2007_006678
+215 2007_006680
+216 2007_006698
+217 2007_006761
+218 2007_006802
+219 2007_006837
+220 2007_006841
+221 2007_006864
+222 2007_006866
+223 2007_006946
+224 2007_007007
+225 2007_007084
+226 2007_007109
+227 2007_007130
+228 2007_007165
+229 2007_007168
+230 2007_007195
+231 2007_007196
+232 2007_007203
+233 2007_007211
+234 2007_007235
+235 2007_007341
+236 2007_007414
+237 2007_007417
+238 2007_007470
+239 2007_007477
+240 2007_007493
+241 2007_007498
+242 2007_007524
+243 2007_007534
+244 2007_007624
+245 2007_007651
+246 2007_007688
+247 2007_007748
+248 2007_007795
+249 2007_007810
+250 2007_007815
+251 2007_007818
+252 2007_007836
+253 2007_007849
+254 2007_007881
+255 2007_007996
+256 2007_008051
+257 2007_008084
+258 2007_008106
+259 2007_008110
+260 2007_008204
+261 2007_008222
+262 2007_008256
+263 2007_008260
+264 2007_008339
+265 2007_008374
+266 2007_008415
+267 2007_008430
+268 2007_008543
+269 2007_008547
+270 2007_008596
+271 2007_008645
+272 2007_008670
+273 2007_008708
+274 2007_008722
+275 2007_008747
+276 2007_008802
+277 2007_008815
+278 2007_008897
+279 2007_008944
+280 2007_008964
+281 2007_008973
+282 2007_008980
+283 2007_009015
+284 2007_009068
+285 2007_009084
+286 2007_009088
+287 2007_009096
+288 2007_009221
+289 2007_009245
+290 2007_009251
+291 2007_009252
+292 2007_009258
+293 2007_009320
+294 2007_009323
+295 2007_009331
+296 2007_009346
+297 2007_009392
+298 2007_009413
+299 2007_009419
+300 2007_009446
+301 2007_009458
+302 2007_009521
+303 2007_009562
+304 2007_009592
+305 2007_009654
+306 2007_009655
+307 2007_009684
+308 2007_009687
+309 2007_009691
+310 2007_009706
+311 2007_009750
+312 2007_009756
+313 2007_009764
+314 2007_009794
+315 2007_009817
+316 2007_009841
+317 2007_009897
+318 2007_009911
+319 2007_009923
+320 2007_009938
+321 2008_000009
+322 2008_000016
+323 2008_000073
+324 2008_000075
+325 2008_000080
+326 2008_000107
+327 2008_000120
+328 2008_000123
+329 2008_000149
+330 2008_000182
+331 2008_000213
+332 2008_000215
+333 2008_000223
+334 2008_000233
+335 2008_000234
+336 2008_000239
+337 2008_000254
+338 2008_000270
+339 2008_000271
+340 2008_000345
+341 2008_000359
+342 2008_000391
+343 2008_000401
+344 2008_000464
+345 2008_000469
+346 2008_000474
+347 2008_000501
+348 2008_000510
+349 2008_000533
+350 2008_000573
+351 2008_000589
+352 2008_000602
+353 2008_000630
+354 2008_000657
+355 2008_000661
+356 2008_000662
+357 2008_000666
+358 2008_000673
+359 2008_000700
+360 2008_000725
+361 2008_000731
+362 2008_000763
+363 2008_000765
+364 2008_000782
+365 2008_000795
+366 2008_000811
+367 2008_000848
+368 2008_000853
+369 2008_000863
+370 2008_000911
+371 2008_000919
+372 2008_000943
+373 2008_000992
+374 2008_001013
+375 2008_001028
+376 2008_001040
+377 2008_001070
+378 2008_001074
+379 2008_001076
+380 2008_001078
+381 2008_001135
+382 2008_001150
+383 2008_001170
+384 2008_001231
+385 2008_001249
+386 2008_001260
+387 2008_001283
+388 2008_001308
+389 2008_001379
+390 2008_001404
+391 2008_001433
+392 2008_001439
+393 2008_001478
+394 2008_001491
+395 2008_001504
+396 2008_001513
+397 2008_001514
+398 2008_001531
+399 2008_001546
+400 2008_001547
+401 2008_001580
+402 2008_001629
+403 2008_001640
+404 2008_001682
+405 2008_001688
+406 2008_001715
+407 2008_001821
+408 2008_001874
+409 2008_001885
+410 2008_001895
+411 2008_001966
+412 2008_001971
+413 2008_001992
+414 2008_002043
+415 2008_002152
+416 2008_002205
+417 2008_002212
+418 2008_002239
+419 2008_002240
+420 2008_002241
+421 2008_002269
+422 2008_002273
+423 2008_002358
+424 2008_002379
+425 2008_002383
+426 2008_002429
+427 2008_002464
+428 2008_002467
+429 2008_002492
+430 2008_002495
+431 2008_002504
+432 2008_002521
+433 2008_002536
+434 2008_002588
+435 2008_002623
+436 2008_002680
+437 2008_002681
+438 2008_002775
+439 2008_002778
+440 2008_002835
+441 2008_002859
+442 2008_002864
+443 2008_002900
+444 2008_002904
+445 2008_002929
+446 2008_002936
+447 2008_002942
+448 2008_002958
+449 2008_003003
+450 2008_003026
+451 2008_003034
+452 2008_003076
+453 2008_003105
+454 2008_003108
+455 2008_003110
+456 2008_003135
+457 2008_003141
+458 2008_003155
+459 2008_003210
+460 2008_003238
+461 2008_003270
+462 2008_003330
+463 2008_003333
+464 2008_003369
+465 2008_003379
+466 2008_003451
+467 2008_003461
+468 2008_003477
+469 2008_003492
+470 2008_003499
+471 2008_003511
+472 2008_003546
+473 2008_003576
+474 2008_003577
+475 2008_003676
+476 2008_003709
+477 2008_003733
+478 2008_003777
+479 2008_003782
+480 2008_003821
+481 2008_003846
+482 2008_003856
+483 2008_003858
+484 2008_003874
+485 2008_003876
+486 2008_003885
+487 2008_003886
+488 2008_003926
+489 2008_003976
+490 2008_004069
+491 2008_004101
+492 2008_004140
+493 2008_004172
+494 2008_004175
+495 2008_004212
+496 2008_004279
+497 2008_004339
+498 2008_004345
+499 2008_004363
+500 2008_004367
+501 2008_004396
+502 2008_004399
+503 2008_004453
+504 2008_004477
+505 2008_004552
+506 2008_004562
+507 2008_004575
+508 2008_004610
+509 2008_004612
+510 2008_004621
+511 2008_004624
+512 2008_004654
+513 2008_004659
+514 2008_004687
+515 2008_004701
+516 2008_004704
+517 2008_004705
+518 2008_004754
+519 2008_004758
+520 2008_004854
+521 2008_004910
+522 2008_004995
+523 2008_005049
+524 2008_005089
+525 2008_005097
+526 2008_005105
+527 2008_005145
+528 2008_005197
+529 2008_005217
+530 2008_005242
+531 2008_005245
+532 2008_005254
+533 2008_005262
+534 2008_005338
+535 2008_005398
+536 2008_005399
+537 2008_005422
+538 2008_005439
+539 2008_005445
+540 2008_005525
+541 2008_005544
+542 2008_005628
+543 2008_005633
+544 2008_005637
+545 2008_005642
+546 2008_005676
+547 2008_005680
+548 2008_005691
+549 2008_005727
+550 2008_005738
+551 2008_005812
+552 2008_005904
+553 2008_005915
+554 2008_006008
+555 2008_006036
+556 2008_006055
+557 2008_006063
+558 2008_006108
+559 2008_006130
+560 2008_006143
+561 2008_006159
+562 2008_006216
+563 2008_006219
+564 2008_006229
+565 2008_006254
+566 2008_006275
+567 2008_006325
+568 2008_006327
+569 2008_006341
+570 2008_006408
+571 2008_006480
+572 2008_006523
+573 2008_006526
+574 2008_006528
+575 2008_006553
+576 2008_006554
+577 2008_006703
+578 2008_006722
+579 2008_006752
+580 2008_006784
+581 2008_006835
+582 2008_006874
+583 2008_006981
+584 2008_006986
+585 2008_007025
+586 2008_007031
+587 2008_007048
+588 2008_007120
+589 2008_007123
+590 2008_007143
+591 2008_007194
+592 2008_007219
+593 2008_007273
+594 2008_007350
+595 2008_007378
+596 2008_007392
+597 2008_007402
+598 2008_007497
+599 2008_007498
+600 2008_007507
+601 2008_007513
+602 2008_007527
+603 2008_007548
+604 2008_007596
+605 2008_007677
+606 2008_007737
+607 2008_007797
+608 2008_007804
+609 2008_007811
+610 2008_007814
+611 2008_007828
+612 2008_007836
+613 2008_007945
+614 2008_007994
+615 2008_008051
+616 2008_008103
+617 2008_008127
+618 2008_008221
+619 2008_008252
+620 2008_008268
+621 2008_008296
+622 2008_008301
+623 2008_008335
+624 2008_008362
+625 2008_008392
+626 2008_008393
+627 2008_008421
+628 2008_008434
+629 2008_008469
+630 2008_008629
+631 2008_008682
+632 2008_008711
+633 2008_008746
+634 2009_000012
+635 2009_000013
+636 2009_000022
+637 2009_000032
+638 2009_000037
+639 2009_000039
+640 2009_000074
+641 2009_000080
+642 2009_000087
+643 2009_000096
+644 2009_000121
+645 2009_000136
+646 2009_000149
+647 2009_000156
+648 2009_000201
+649 2009_000205
+650 2009_000219
+651 2009_000242
+652 2009_000309
+653 2009_000318
+654 2009_000335
+655 2009_000351
+656 2009_000354
+657 2009_000387
+658 2009_000391
+659 2009_000412
+660 2009_000418
+661 2009_000421
+662 2009_000426
+663 2009_000440
+664 2009_000446
+665 2009_000455
+666 2009_000457
+667 2009_000469
+668 2009_000487
+669 2009_000488
+670 2009_000523
+671 2009_000573
+672 2009_000619
+673 2009_000628
+674 2009_000641
+675 2009_000664
+676 2009_000675
+677 2009_000704
+678 2009_000705
+679 2009_000712
+680 2009_000716
+681 2009_000723
+682 2009_000727
+683 2009_000730
+684 2009_000731
+685 2009_000732
+686 2009_000771
+687 2009_000825
+688 2009_000828
+689 2009_000839
+690 2009_000840
+691 2009_000845
+692 2009_000879
+693 2009_000892
+694 2009_000919
+695 2009_000924
+696 2009_000931
+697 2009_000935
+698 2009_000964
+699 2009_000989
+700 2009_000991
+701 2009_000998
+702 2009_001008
+703 2009_001082
+704 2009_001108
+705 2009_001160
+706 2009_001215
+707 2009_001240
+708 2009_001255
+709 2009_001278
+710 2009_001299
+711 2009_001300
+712 2009_001314
+713 2009_001332
+714 2009_001333
+715 2009_001363
+716 2009_001391
+717 2009_001411
+718 2009_001433
+719 2009_001505
+720 2009_001535
+721 2009_001536
+722 2009_001565
+723 2009_001607
+724 2009_001644
+725 2009_001663
+726 2009_001683
+727 2009_001684
+728 2009_001687
+729 2009_001718
+730 2009_001731
+731 2009_001765
+732 2009_001768
+733 2009_001775
+734 2009_001804
+735 2009_001816
+736 2009_001818
+737 2009_001850
+738 2009_001851
+739 2009_001854
+740 2009_001941
+741 2009_001991
+742 2009_002012
+743 2009_002035
+744 2009_002042
+745 2009_002082
+746 2009_002094
+747 2009_002097
+748 2009_002122
+749 2009_002150
+750 2009_002155
+751 2009_002164
+752 2009_002165
+753 2009_002171
+754 2009_002185
+755 2009_002202
+756 2009_002221
+757 2009_002238
+758 2009_002239
+759 2009_002265
+760 2009_002268
+761 2009_002291
+762 2009_002295
+763 2009_002317
+764 2009_002320
+765 2009_002346
+766 2009_002366
+767 2009_002372
+768 2009_002382
+769 2009_002390
+770 2009_002415
+771 2009_002445
+772 2009_002487
+773 2009_002521
+774 2009_002527
+775 2009_002535
+776 2009_002539
+777 2009_002549
+778 2009_002562
+779 2009_002568
+780 2009_002571
+781 2009_002573
+782 2009_002584
+783 2009_002591
+784 2009_002594
+785 2009_002604
+786 2009_002618
+787 2009_002635
+788 2009_002638
+789 2009_002649
+790 2009_002651
+791 2009_002727
+792 2009_002732
+793 2009_002749
+794 2009_002753
+795 2009_002771
+796 2009_002808
+797 2009_002856
+798 2009_002887
+799 2009_002888
+800 2009_002928
+801 2009_002936
+802 2009_002975
+803 2009_002982
+804 2009_002990
+805 2009_003003
+806 2009_003005
+807 2009_003043
+808 2009_003059
+809 2009_003063
+810 2009_003065
+811 2009_003071
+812 2009_003080
+813 2009_003105
+814 2009_003123
+815 2009_003193
+816 2009_003196
+817 2009_003217
+818 2009_003224
+819 2009_003241
+820 2009_003269
+821 2009_003273
+822 2009_003299
+823 2009_003304
+824 2009_003311
+825 2009_003323
+826 2009_003343
+827 2009_003378
+828 2009_003387
+829 2009_003406
+830 2009_003433
+831 2009_003450
+832 2009_003466
+833 2009_003481
+834 2009_003494
+835 2009_003498
+836 2009_003504
+837 2009_003507
+838 2009_003517
+839 2009_003523
+840 2009_003542
+841 2009_003549
+842 2009_003551
+843 2009_003564
+844 2009_003569
+845 2009_003576
+846 2009_003589
+847 2009_003607
+848 2009_003640
+849 2009_003666
+850 2009_003696
+851 2009_003703
+852 2009_003707
+853 2009_003756
+854 2009_003771
+855 2009_003773
+856 2009_003804
+857 2009_003806
+858 2009_003810
+859 2009_003849
+860 2009_003857
+861 2009_003858
+862 2009_003895
+863 2009_003903
+864 2009_003904
+865 2009_003928
+866 2009_003938
+867 2009_003971
+868 2009_003991
+869 2009_004021
+870 2009_004033
+871 2009_004043
+872 2009_004070
+873 2009_004072
+874 2009_004084
+875 2009_004099
+876 2009_004125
+877 2009_004140
+878 2009_004217
+879 2009_004221
+880 2009_004247
+881 2009_004248
+882 2009_004255
+883 2009_004298
+884 2009_004324
+885 2009_004455
+886 2009_004494
+887 2009_004497
+888 2009_004504
+889 2009_004507
+890 2009_004509
+891 2009_004540
+892 2009_004568
+893 2009_004579
+894 2009_004581
+895 2009_004590
+896 2009_004592
+897 2009_004594
+898 2009_004635
+899 2009_004653
+900 2009_004687
+901 2009_004721
+902 2009_004730
+903 2009_004732
+904 2009_004738
+905 2009_004748
+906 2009_004789
+907 2009_004799
+908 2009_004801
+909 2009_004848
+910 2009_004859
+911 2009_004867
+912 2009_004882
+913 2009_004886
+914 2009_004895
+915 2009_004942
+916 2009_004969
+917 2009_004987
+918 2009_004993
+919 2009_004994
+920 2009_005038
+921 2009_005078
+922 2009_005087
+923 2009_005089
+924 2009_005137
+925 2009_005148
+926 2009_005156
+927 2009_005158
+928 2009_005189
+929 2009_005190
+930 2009_005217
+931 2009_005219
+932 2009_005220
+933 2009_005231
+934 2009_005260
+935 2009_005262
+936 2009_005302
+937 2010_000003
+938 2010_000038
+939 2010_000065
+940 2010_000083
+941 2010_000084
+942 2010_000087
+943 2010_000110
+944 2010_000159
+945 2010_000160
+946 2010_000163
+947 2010_000174
+948 2010_000216
+949 2010_000238
+950 2010_000241
+951 2010_000256
+952 2010_000272
+953 2010_000284
+954 2010_000309
+955 2010_000318
+956 2010_000330
+957 2010_000335
+958 2010_000342
+959 2010_000372
+960 2010_000422
+961 2010_000426
+962 2010_000427
+963 2010_000502
+964 2010_000530
+965 2010_000552
+966 2010_000559
+967 2010_000572
+968 2010_000573
+969 2010_000622
+970 2010_000628
+971 2010_000639
+972 2010_000666
+973 2010_000679
+974 2010_000682
+975 2010_000683
+976 2010_000724
+977 2010_000738
+978 2010_000764
+979 2010_000788
+980 2010_000814
+981 2010_000836
+982 2010_000874
+983 2010_000904
+984 2010_000906
+985 2010_000907
+986 2010_000918
+987 2010_000929
+988 2010_000941
+989 2010_000952
+990 2010_000961
+991 2010_001000
+992 2010_001010
+993 2010_001011
+994 2010_001016
+995 2010_001017
+996 2010_001024
+997 2010_001036
+998 2010_001061
+999 2010_001069
+1000 2010_001070
+1001 2010_001079
+1002 2010_001104
+1003 2010_001124
+1004 2010_001149
+1005 2010_001151
+1006 2010_001174
+1007 2010_001206
+1008 2010_001246
+1009 2010_001251
+1010 2010_001256
+1011 2010_001264
+1012 2010_001292
+1013 2010_001313
+1014 2010_001327
+1015 2010_001331
+1016 2010_001351
+1017 2010_001367
+1018 2010_001376
+1019 2010_001403
+1020 2010_001448
+1021 2010_001451
+1022 2010_001522
+1023 2010_001534
+1024 2010_001553
+1025 2010_001557
+1026 2010_001563
+1027 2010_001577
+1028 2010_001579
+1029 2010_001646
+1030 2010_001656
+1031 2010_001692
+1032 2010_001699
+1033 2010_001734
+1034 2010_001752
+1035 2010_001767
+1036 2010_001768
+1037 2010_001773
+1038 2010_001820
+1039 2010_001830
+1040 2010_001851
+1041 2010_001908
+1042 2010_001913
+1043 2010_001951
+1044 2010_001956
+1045 2010_001962
+1046 2010_001966
+1047 2010_001995
+1048 2010_002017
+1049 2010_002025
+1050 2010_002030
+1051 2010_002106
+1052 2010_002137
+1053 2010_002142
+1054 2010_002146
+1055 2010_002147
+1056 2010_002150
+1057 2010_002161
+1058 2010_002200
+1059 2010_002228
+1060 2010_002232
+1061 2010_002251
+1062 2010_002271
+1063 2010_002305
+1064 2010_002310
+1065 2010_002336
+1066 2010_002348
+1067 2010_002361
+1068 2010_002390
+1069 2010_002396
+1070 2010_002422
+1071 2010_002450
+1072 2010_002480
+1073 2010_002512
+1074 2010_002531
+1075 2010_002536
+1076 2010_002538
+1077 2010_002546
+1078 2010_002623
+1079 2010_002682
+1080 2010_002691
+1081 2010_002693
+1082 2010_002701
+1083 2010_002763
+1084 2010_002792
+1085 2010_002868
+1086 2010_002900
+1087 2010_002902
+1088 2010_002921
+1089 2010_002929
+1090 2010_002939
+1091 2010_002988
+1092 2010_003014
+1093 2010_003060
+1094 2010_003123
+1095 2010_003127
+1096 2010_003132
+1097 2010_003168
+1098 2010_003183
+1099 2010_003187
+1100 2010_003207
+1101 2010_003231
+1102 2010_003239
+1103 2010_003275
+1104 2010_003276
+1105 2010_003293
+1106 2010_003302
+1107 2010_003325
+1108 2010_003362
+1109 2010_003365
+1110 2010_003381
+1111 2010_003402
+1112 2010_003409
+1113 2010_003418
+1114 2010_003446
+1115 2010_003453
+1116 2010_003468
+1117 2010_003473
+1118 2010_003495
+1119 2010_003506
+1120 2010_003514
+1121 2010_003531
+1122 2010_003532
+1123 2010_003541
+1124 2010_003547
+1125 2010_003597
+1126 2010_003675
+1127 2010_003708
+1128 2010_003716
+1129 2010_003746
+1130 2010_003758
+1131 2010_003764
+1132 2010_003768
+1133 2010_003771
+1134 2010_003772
+1135 2010_003781
+1136 2010_003813
+1137 2010_003820
+1138 2010_003854
+1139 2010_003912
+1140 2010_003915
+1141 2010_003947
+1142 2010_003956
+1143 2010_003971
+1144 2010_004041
+1145 2010_004042
+1146 2010_004056
+1147 2010_004063
+1148 2010_004104
+1149 2010_004120
+1150 2010_004149
+1151 2010_004165
+1152 2010_004208
+1153 2010_004219
+1154 2010_004226
+1155 2010_004314
+1156 2010_004320
+1157 2010_004322
+1158 2010_004337
+1159 2010_004348
+1160 2010_004355
+1161 2010_004369
+1162 2010_004382
+1163 2010_004419
+1164 2010_004432
+1165 2010_004472
+1166 2010_004479
+1167 2010_004519
+1168 2010_004520
+1169 2010_004529
+1170 2010_004543
+1171 2010_004550
+1172 2010_004551
+1173 2010_004556
+1174 2010_004559
+1175 2010_004628
+1176 2010_004635
+1177 2010_004662
+1178 2010_004697
+1179 2010_004757
+1180 2010_004763
+1181 2010_004772
+1182 2010_004783
+1183 2010_004789
+1184 2010_004795
+1185 2010_004815
+1186 2010_004825
+1187 2010_004828
+1188 2010_004856
+1189 2010_004857
+1190 2010_004861
+1191 2010_004941
+1192 2010_004946
+1193 2010_004951
+1194 2010_004980
+1195 2010_004994
+1196 2010_005013
+1197 2010_005021
+1198 2010_005046
+1199 2010_005063
+1200 2010_005108
+1201 2010_005118
+1202 2010_005159
+1203 2010_005160
+1204 2010_005166
+1205 2010_005174
+1206 2010_005180
+1207 2010_005187
+1208 2010_005206
+1209 2010_005245
+1210 2010_005252
+1211 2010_005284
+1212 2010_005305
+1213 2010_005344
+1214 2010_005353
+1215 2010_005366
+1216 2010_005401
+1217 2010_005421
+1218 2010_005428
+1219 2010_005432
+1220 2010_005433
+1221 2010_005496
+1222 2010_005501
+1223 2010_005508
+1224 2010_005531
+1225 2010_005534
+1226 2010_005575
+1227 2010_005582
+1228 2010_005606
+1229 2010_005626
+1230 2010_005644
+1231 2010_005664
+1232 2010_005705
+1233 2010_005706
+1234 2010_005709
+1235 2010_005718
+1236 2010_005719
+1237 2010_005727
+1238 2010_005762
+1239 2010_005788
+1240 2010_005860
+1241 2010_005871
+1242 2010_005877
+1243 2010_005888
+1244 2010_005899
+1245 2010_005922
+1246 2010_005991
+1247 2010_005992
+1248 2010_006026
+1249 2010_006034
+1250 2010_006054
+1251 2010_006070
+1252 2011_000045
+1253 2011_000051
+1254 2011_000054
+1255 2011_000066
+1256 2011_000070
+1257 2011_000112
+1258 2011_000173
+1259 2011_000178
+1260 2011_000185
+1261 2011_000226
+1262 2011_000234
+1263 2011_000238
+1264 2011_000239
+1265 2011_000248
+1266 2011_000283
+1267 2011_000291
+1268 2011_000310
+1269 2011_000312
+1270 2011_000338
+1271 2011_000396
+1272 2011_000412
+1273 2011_000419
+1274 2011_000435
+1275 2011_000436
+1276 2011_000438
+1277 2011_000455
+1278 2011_000456
+1279 2011_000479
+1280 2011_000481
+1281 2011_000482
+1282 2011_000503
+1283 2011_000512
+1284 2011_000521
+1285 2011_000526
+1286 2011_000536
+1287 2011_000548
+1288 2011_000566
+1289 2011_000585
+1290 2011_000598
+1291 2011_000607
+1292 2011_000618
+1293 2011_000638
+1294 2011_000658
+1295 2011_000661
+1296 2011_000669
+1297 2011_000747
+1298 2011_000780
+1299 2011_000789
+1300 2011_000807
+1301 2011_000809
+1302 2011_000813
+1303 2011_000830
+1304 2011_000843
+1305 2011_000874
+1306 2011_000888
+1307 2011_000900
+1308 2011_000912
+1309 2011_000953
+1310 2011_000969
+1311 2011_001005
+1312 2011_001014
+1313 2011_001020
+1314 2011_001047
+1315 2011_001060
+1316 2011_001064
+1317 2011_001069
+1318 2011_001071
+1319 2011_001082
+1320 2011_001110
+1321 2011_001114
+1322 2011_001159
+1323 2011_001161
+1324 2011_001190
+1325 2011_001232
+1326 2011_001263
+1327 2011_001276
+1328 2011_001281
+1329 2011_001287
+1330 2011_001292
+1331 2011_001313
+1332 2011_001341
+1333 2011_001346
+1334 2011_001350
+1335 2011_001407
+1336 2011_001416
+1337 2011_001421
+1338 2011_001434
+1339 2011_001447
+1340 2011_001489
+1341 2011_001529
+1342 2011_001530
+1343 2011_001534
+1344 2011_001546
+1345 2011_001567
+1346 2011_001589
+1347 2011_001597
+1348 2011_001601
+1349 2011_001607
+1350 2011_001613
+1351 2011_001614
+1352 2011_001619
+1353 2011_001624
+1354 2011_001642
+1355 2011_001665
+1356 2011_001669
+1357 2011_001674
+1358 2011_001708
+1359 2011_001713
+1360 2011_001714
+1361 2011_001722
+1362 2011_001726
+1363 2011_001745
+1364 2011_001748
+1365 2011_001775
+1366 2011_001782
+1367 2011_001793
+1368 2011_001794
+1369 2011_001812
+1370 2011_001862
+1371 2011_001863
+1372 2011_001868
+1373 2011_001880
+1374 2011_001910
+1375 2011_001984
+1376 2011_001988
+1377 2011_002002
+1378 2011_002040
+1379 2011_002041
+1380 2011_002064
+1381 2011_002075
+1382 2011_002098
+1383 2011_002110
+1384 2011_002121
+1385 2011_002124
+1386 2011_002150
+1387 2011_002156
+1388 2011_002178
+1389 2011_002200
+1390 2011_002223
+1391 2011_002244
+1392 2011_002247
+1393 2011_002279
+1394 2011_002295
+1395 2011_002298
+1396 2011_002308
+1397 2011_002317
+1398 2011_002322
+1399 2011_002327
+1400 2011_002343
+1401 2011_002358
+1402 2011_002371
+1403 2011_002379
+1404 2011_002391
+1405 2011_002498
+1406 2011_002509
+1407 2011_002515
+1408 2011_002532
+1409 2011_002535
+1410 2011_002548
+1411 2011_002575
+1412 2011_002578
+1413 2011_002589
+1414 2011_002592
+1415 2011_002623
+1416 2011_002641
+1417 2011_002644
+1418 2011_002662
+1419 2011_002675
+1420 2011_002685
+1421 2011_002713
+1422 2011_002730
+1423 2011_002754
+1424 2011_002812
+1425 2011_002863
+1426 2011_002879
+1427 2011_002885
+1428 2011_002929
+1429 2011_002951
+1430 2011_002975
+1431 2011_002993
+1432 2011_002997
+1433 2011_003003
+1434 2011_003011
+1435 2011_003019
+1436 2011_003030
+1437 2011_003055
+1438 2011_003085
+1439 2011_003103
+1440 2011_003114
+1441 2011_003145
+1442 2011_003146
+1443 2011_003182
+1444 2011_003197
+1445 2011_003205
+1446 2011_003240
+1447 2011_003256
+1448 2011_003271
+(pdsrg) austin@vader:/media/ssd1/austin/Point-DSRG/training/experiment/seed_mc$ vim run
+(pdsrg) austin@vader:/media/ssd1/austin/Point-DSRG/training/experiment/seed_mc$ vim run.sh
+(pdsrg) austin@vader:/media/ssd1/austin/Point-DSRG/training/experiment/seed_mc$ python ../../tools/evaluate.py --pred ${PASCAL_DIR}/DSRGValOutput --gt ${PASCAL_DIR}/SegmentationClass --test_ids list/val_id.txt --save_path DSRG_result_1.txt --class_num 21
+0 processd of 1449
+100 processd of 1449
+200 processd of 1449
+300 processd of 1449
+400 processd of 1449
+500 processd of 1449
+600 processd of 1449
+700 processd of 1449
+800 processd of 1449
+900 processd of 1449
+1000 processd of 1449
+1100 processd of 1449
+1200 processd of 1449
+1300 processd of 1449
+1400 processd of 1449
+(pdsrg) austin@vader:/media/ssd1/austin/Point-DSRG/training/experiment/seed_mc$
+(pdsrg) austin@vader:/media/ssd1/austin/Point-DSRG/training/experiment/seed_mc$ cat DSRG_result_1.txt
+meanIOU: 0.532253888615
+[0.83569971112414387, 0.59509303597062646, 0.21699325459708105, 0.6495279552455745, 0.30682947346716738, 0.52674771578873136, 0.72371041396080804, 0.64696150598618429, 0.74381285361813154, 0.22351210497095247, 0.62808711124873362, 0.25217335463717866, 0.71975229675862251, 0.58585308661650748, 0.57720623764784096, 0.65981171265296568, 0.32860041119584016, 0.6213354195188735, 0.35456667758113836, 0.4926163775398823, 0.48844095079017363]
+[[  1.71077313e+08   1.13970200e+06   2.00100900e+06   7.58259000e+05
+    2.27457900e+06   5.58075000e+05   8.59959000e+05   1.11565600e+06
+    1.09760800e+06   1.25863200e+06   3.76117000e+05   2.27727000e+05
+    7.02329000e+05   6.59643000e+05   8.78502000e+05   2.67877500e+06
+    9.49839000e+05   5.30343000e+05   6.14964000e+05   2.79916200e+06
+    1.22085000e+06]
+ [  7.88970000e+04   1.83729500e+06   0.00000000e+00   0.00000000e+00
+    7.54300000e+03   0.00000000e+00   0.00000000e+00   7.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   7.10000000e+01
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00]
+ [  1.43175000e+05   0.00000000e+00   6.25656000e+05   1.45000000e+02
+    0.00000000e+00   0.00000000e+00   1.02000000e+02   1.85300000e+03
+    2.00000000e+00   2.28800000e+03   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   9.87500000e+03   2.97410000e+04
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00]
+ [  1.80802000e+05   0.00000000e+00   0.00000000e+00   1.91620100e+06
+    1.74000000e+02   0.00000000e+00   5.80000000e+01   0.00000000e+00
+    2.60600000e+03   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    2.85560000e+04   2.50000000e+02   0.00000000e+00   7.78300000e+03
+    8.70000000e+02   1.45850000e+04   0.00000000e+00   0.00000000e+00
+    0.00000000e+00]
+ [  2.10913000e+05   4.64200000e+03   0.00000000e+00   6.21000000e+02
+    1.11903900e+06   0.00000000e+00   0.00000000e+00   1.77900000e+03
+    0.00000000e+00   6.60300000e+03   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   5.05600000e+03
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00]
+ [  5.31123000e+05   2.25200000e+03   1.61900000e+03   4.42400000e+03
+    2.00000000e+00   1.32954600e+06   6.35000000e+02   1.00000000e+00
+    2.99000000e+02   0.00000000e+00   0.00000000e+00   2.21700000e+03
+    1.60000000e+01   0.00000000e+00   4.38000000e+02   4.71200000e+04
+    0.00000000e+00   9.77000000e+02   8.01000000e+02   0.00000000e+00
+    3.07000000e+02]
+ [  4.48879000e+05   6.09500000e+03   0.00000000e+00   0.00000000e+00
+    2.74000000e+02   0.00000000e+00   3.79069600e+06   3.79240000e+04
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   2.17170000e+04
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   1.51670000e+04
+    0.00000000e+00]
+ [  3.84355000e+05   4.02800000e+03   2.98500000e+03   0.00000000e+00
+    4.14200000e+03   6.12800000e+03   1.47830000e+04   3.12922600e+06
+    0.00000000e+00   0.00000000e+00   8.00000000e+00   0.00000000e+00
+    1.49100000e+03   3.10000000e+01   1.45880000e+04   9.41600000e+03
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   2.22070000e+04
+    6.60000000e+01]
+ [  3.37467000e+05   0.00000000e+00   0.00000000e+00   1.45850000e+04
+    0.00000000e+00   3.81000000e+02   0.00000000e+00   0.00000000e+00
+    5.24070900e+06   4.21000000e+02   0.00000000e+00   2.20000000e+01
+    9.30780000e+04   0.00000000e+00   0.00000000e+00   3.11480000e+04
+    1.07900000e+03   1.44000000e+03   6.21000000e+02   0.00000000e+00
+    0.00000000e+00]
+ [  8.05050000e+05   5.90000000e+01   2.30000000e+01   0.00000000e+00
+    2.11300000e+03   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    2.81530000e+04   8.21679000e+05   0.00000000e+00   3.40330000e+04
+    3.90000000e+01   0.00000000e+00   4.60000000e+01   1.21354000e+05
+    5.83500000e+03   0.00000000e+00   2.84896000e+05   0.00000000e+00
+    1.09130000e+04]
+ [  4.57085000e+05   0.00000000e+00   0.00000000e+00   5.03300000e+03
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   5.24200000e+03
+    3.35440000e+04   0.00000000e+00   2.22309800e+06   0.00000000e+00
+    5.09150000e+04   1.86122000e+05   4.20000000e+01   3.02100000e+03
+    0.00000000e+00   2.74200000e+03   0.00000000e+00   0.00000000e+00
+    0.00000000e+00]
+ [  1.62671800e+06   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   2.00760000e+04   0.00000000e+00   0.00000000e+00
+    2.78100000e+03   1.62424000e+05   0.00000000e+00   7.93236000e+05
+    2.00000000e+00   0.00000000e+00   0.00000000e+00   1.82055000e+05
+    9.34100000e+03   0.00000000e+00   1.59600000e+04   0.00000000e+00
+    5.21570000e+04]
+ [  4.40007000e+05   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   5.06000000e+02
+    1.37526000e+05   2.62500000e+03   3.02500000e+03   0.00000000e+00
+    4.37843100e+06   1.32070000e+04   3.72600000e+03   3.55330000e+04
+    1.79000000e+02   1.94050000e+04   2.19000000e+02   0.00000000e+00
+    0.00000000e+00]
+ [  3.63659000e+05   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    1.94100000e+03   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   6.05910000e+04   0.00000000e+00
+    3.32120000e+04   2.10269000e+06   0.00000000e+00   2.69430000e+04
+    0.00000000e+00   5.29010000e+04   0.00000000e+00   0.00000000e+00
+    0.00000000e+00]
+ [  3.25129000e+05   0.00000000e+00   5.93400000e+03   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   4.45480000e+04
+    0.00000000e+00   1.05650000e+04   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   2.17407500e+06   2.71360000e+04
+    4.70000000e+01   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    6.00000000e+00]
+ [  1.47093600e+06   6.58700000e+03   5.68330000e+04   1.60200000e+03
+    7.68300000e+03   1.46200000e+04   1.84630000e+04   3.54830000e+04
+    6.24800000e+03   1.06480000e+04   2.12650000e+04   1.32260000e+04
+    9.66200000e+04   8.51260000e+04   2.67992000e+05   1.08009640e+07
+    1.97800000e+03   1.30200000e+03   7.08130000e+04   1.01730000e+04
+    1.06100000e+03]
+ [  4.86183000e+05   0.00000000e+00   2.05700000e+03   1.14900000e+03
+    0.00000000e+00   1.98200000e+03   0.00000000e+00   3.11000000e+02
+    0.00000000e+00   5.10900000e+03   0.00000000e+00   3.61800000e+03
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   7.41500000e+03
+    7.24974000e+05   0.00000000e+00   1.51400000e+03   3.00000000e+00
+    2.47000000e+02]
+ [  1.77157000e+05   0.00000000e+00   0.00000000e+00   1.24410000e+04
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    3.49500000e+03   0.00000000e+00   1.11624000e+05   0.00000000e+00
+    3.35170000e+04   2.79200000e+03   3.31700000e+03   1.80000000e+01
+    0.00000000e+00   1.58844400e+06   0.00000000e+00   0.00000000e+00
+    0.00000000e+00]
+ [  1.65185400e+06   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    1.25230000e+04   9.67020000e+04   0.00000000e+00   5.00000000e+00
+    9.08300000e+03   0.00000000e+00   0.00000000e+00   1.18701000e+05
+    2.51800000e+03   0.00000000e+00   1.58531300e+06   0.00000000e+00
+    2.53600000e+03]
+ [  5.48628000e+05   2.30000000e+02   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   1.02700000e+03   2.31110000e+04   1.50000000e+01
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   5.82000000e+02   1.25090000e+04
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   3.33290300e+06
+    0.00000000e+00]
+ [  2.64406000e+05   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   2.50000000e+01
+    0.00000000e+00   6.00700000e+03   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   4.63200000e+03
+    0.00000000e+00   0.00000000e+00   2.10500000e+03   0.00000000e+00
+    1.49457900e+06]]

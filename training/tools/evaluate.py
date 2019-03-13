@@ -157,7 +157,6 @@ if __name__ == '__main__':
             # pdb.set_trace()
         # pdb.set_trace()
 
-    print("made it")
     # pdb.set_trace()
     ConfM = ConfusionMatrix(args.class_num)
     f = ConfM.generateM
